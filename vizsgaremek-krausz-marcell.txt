@@ -1,0 +1,34 @@
+1.Operations on Address
+GET /address - Retrievel all address from database.
+GET /address/{id} - Retrieve specific address by its id.
+PUT /address/update/{id} - Update address via JSON.
+POST /address/create - Create address via JSON.
+DELETE /address/delete/{id} - Delete address by its id.
+
+2.Operations on Appointment
+GET /appointment - Retrievel all appointment from database.
+GET /appointment/{id} - Retrieve specific appointment by its id.
+PUT /appointment/update/{id} - Update appointment via JSON.
+POST /appointment/create - Create appointment via JSON.
+DELETE /appointment/delete/{id} - Delete appointment by its id.
+
+3.Operations on City
+GET /city - Retrievel all city from database.
+GET /city/{id} - Retrieve specific city by its id.
+PUT /city/update/{id} - Update city via JSON.
+POST /city/create - Create city via JSON.
+DELETE /city/delete/{id} - Delete city by its id.
+
+3.Operations on CosmeticService
+GET /cosmeticService - Retrievel all cosmeticService from database.
+GET /cosmeticService/{id} - Retrieve specific cosmeticService by its id.
+PUT /cosmeticService/update/{id} - Update cosmeticService via JSON.
+POST /cosmeticService/create - Create cosmeticService via JSON.
+DELETE /cosmeticService/delete/{id} - Delete cosmeticService by its id.
+
+4.Operations on Customer
+GET /customer - Retrievel all customer from database.
+GET /customer/{id} - Retrieve specific customer by its id.
+PUT /customer/update/{id} - Update customer via JSON.
+POST /customer/create - Create customer via JSON.
+DELETE /customer/delete/{id} - Delete customer by its id.

@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserver.model;
+package com.marcellkrausz.appointmentreserver.models;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,4 +26,7 @@ public class Customer {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private Set<Appointment> customerAppointments = new HashSet<>();
 
+    public void addAppointment(Appointment appointment) {
+        this.customerAppointments.add(appointment);
+    }
 }

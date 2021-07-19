@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserver.model;
+package com.marcellkrausz.appointmentreserver.models;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +17,8 @@ public class CosmeticService {
     private Long id;
     private String name;
     private Integer price;
+    private Integer minutes;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cosmeticService")
+    @ManyToMany(mappedBy = "cosmeticServices")
     private Set<Appointment> serviceAppointments = new HashSet<>();
 }

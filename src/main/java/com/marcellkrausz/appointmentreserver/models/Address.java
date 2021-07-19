@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserver.model;
+package com.marcellkrausz.appointmentreserver.models;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +18,4 @@ public class Address {
 
     @ManyToOne
     private City city;
-
-    @OneToOne
-    private Customer customer;
 }

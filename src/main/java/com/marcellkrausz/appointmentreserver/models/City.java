@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserver.model;
+package com.marcellkrausz.appointmentreserver.models;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,4 +20,8 @@ public class City {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "city")
     private Set<Address> addresses = new HashSet<>();
+
+    public void addAddress(Address address) {
+        this.addresses.add(address);
+    }
 }

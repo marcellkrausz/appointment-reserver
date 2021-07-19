@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,9 +19,16 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "First name is required")
+    @Size(max = 15, message = "First name length should be less then 15 character")
     private String firstName;
+    @NotBlank(message = "Last name is required")
+    @Size(max = 15, message = "Last name length should be less then 15 character")
     private String lastName;
+    @NotBlank(message = "Phone number is required.")
+    @Size(max = 15, message = "Phone number length should be less then 15 character")
     private String phoneNumber;
+    @NotBlank(message = "Email is required.")
     private String email;
 
     @OneToOne

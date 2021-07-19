@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,9 +17,11 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotBlank(message = "Appointment start date is required.")
     private LocalDateTime appointmentDateStart;
+    @NotBlank(message = "Appointment end date is required.")
     private LocalDateTime appointmentDateEnd;
+
 
     @ManyToOne
     private Customer customer;

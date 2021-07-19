@@ -17,7 +17,7 @@ public class CityDtoToCity implements Converter<CityDto, City> {
         final City city = new City();
         city.setId(cityDto.getId());
         city.setName(cityDto.getName());
-        city.setPostalCode(city.getPostalCode());
+        city.setPostalCode(cityDto.getPostalCode());
 
         return city;
     }

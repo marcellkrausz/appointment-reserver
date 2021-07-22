@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserver.controllers;
 
-import com.marcellkrausz.appointmentreserver.dto.AddressDto;
+import com.marcellkrausz.appointmentreserver.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserver.models.Address;
 import com.marcellkrausz.appointmentreserver.services.AddressService;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +37,7 @@ public class AddressController {
         addressService.saveAddress(addressDto);
     }
 
-    @DeleteMapping("/address")
+    @DeleteMapping("/address/{id}")
     public void delete(@PathVariable("id") Long id) {
         addressService.deleteAddressById(id);
     }

@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserver.dto;
+package com.marcellkrausz.appointmentreserver.models.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserver.controllers;
 
-import com.marcellkrausz.appointmentreserver.dto.CosmeticServiceDto;
+import com.marcellkrausz.appointmentreserver.models.dto.CosmeticServiceDto;
 import com.marcellkrausz.appointmentreserver.models.CosmeticService;
 import com.marcellkrausz.appointmentreserver.services.CosmeticServiceService;
 import org.springframework.web.bind.annotation.*;

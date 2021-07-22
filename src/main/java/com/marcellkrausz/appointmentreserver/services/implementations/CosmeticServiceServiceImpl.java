@@ -1,10 +1,11 @@
-package com.marcellkrausz.appointmentreserver.services;
+package com.marcellkrausz.appointmentreserver.services.implementations;
 
-import com.marcellkrausz.appointmentreserver.dto.CosmeticServiceDto;
+import com.marcellkrausz.appointmentreserver.models.dto.CosmeticServiceDto;
 import com.marcellkrausz.appointmentreserver.converters.CosmeticServiceDtoToCosmeticService;
 import com.marcellkrausz.appointmentreserver.converters.CosmeticServiceToCosmeticServiceDto;
 import com.marcellkrausz.appointmentreserver.models.CosmeticService;
 import com.marcellkrausz.appointmentreserver.repositories.CosmeticServiceRepository;
+import com.marcellkrausz.appointmentreserver.services.CosmeticServiceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

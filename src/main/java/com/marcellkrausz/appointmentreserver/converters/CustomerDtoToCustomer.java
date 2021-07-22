@@ -1,14 +1,18 @@
 package com.marcellkrausz.appointmentreserver.converters;
 
-import com.marcellkrausz.appointmentreserver.dto.CustomerDto;
+import com.marcellkrausz.appointmentreserver.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserver.models.Address;
 import com.marcellkrausz.appointmentreserver.models.Customer;
+import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CustomerDtoToCustomer implements Converter<CustomerDto, Customer> {
 
+    @Synchronized
+    @Nullable
     @Override
     public Customer convert(CustomerDto customerDto) {
         if (customerDto == null) {

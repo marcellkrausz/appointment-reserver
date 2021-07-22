@@ -1,14 +1,18 @@
 package com.marcellkrausz.appointmentreserver.converters;
 
-import com.marcellkrausz.appointmentreserver.dto.AddressDto;
+import com.marcellkrausz.appointmentreserver.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserver.models.Address;
 import com.marcellkrausz.appointmentreserver.models.City;
+import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AddressDtoToAddress implements Converter<AddressDto, Address> {
 
+    @Synchronized
+    @Nullable
     @Override
     public Address convert(AddressDto addressDto) {
         if (addressDto == null) {

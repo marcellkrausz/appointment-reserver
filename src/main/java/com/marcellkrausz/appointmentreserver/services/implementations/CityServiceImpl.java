@@ -1,10 +1,11 @@
-package com.marcellkrausz.appointmentreserver.services;
+package com.marcellkrausz.appointmentreserver.services.implementations;
 
-import com.marcellkrausz.appointmentreserver.dto.CityDto;
+import com.marcellkrausz.appointmentreserver.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserver.converters.CityDtoToCity;
 import com.marcellkrausz.appointmentreserver.converters.CityToCityDto;
 import com.marcellkrausz.appointmentreserver.models.City;
 import com.marcellkrausz.appointmentreserver.repositories.CityRepository;
+import com.marcellkrausz.appointmentreserver.services.CityService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserver.controllers;
 
-import com.marcellkrausz.appointmentreserver.dto.CustomerDto;
+import com.marcellkrausz.appointmentreserver.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserver.models.Customer;
 import com.marcellkrausz.appointmentreserver.services.CustomerService;
 import org.springframework.web.bind.annotation.*;

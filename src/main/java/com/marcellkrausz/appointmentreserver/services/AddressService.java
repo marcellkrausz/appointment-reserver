@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserver.services;
 
-import com.marcellkrausz.appointmentreserver.dto.AddressDto;
+import com.marcellkrausz.appointmentreserver.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserver.models.Address;
 
 import java.util.Set;

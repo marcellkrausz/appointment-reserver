@@ -1,19 +1,24 @@
 package com.marcellkrausz.appointmentreserver.converters;
 
-import com.marcellkrausz.appointmentreserver.dto.AppointmentDto;
+import com.marcellkrausz.appointmentreserver.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserver.models.Appointment;
 import com.marcellkrausz.appointmentreserver.models.Customer;
+import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AppointmentDtoToAppointment implements Converter<AppointmentDto, Appointment> {
+
     private final CosmeticServiceDtoToCosmeticService cosmeticServiceDtoToCosmeticService;
 
     public AppointmentDtoToAppointment(CosmeticServiceDtoToCosmeticService cosmeticServiceDtoToCosmeticService) {
         this.cosmeticServiceDtoToCosmeticService = cosmeticServiceDtoToCosmeticService;
     }
 
+    @Synchronized
+    @Nullable
     @Override
     public Appointment convert(AppointmentDto appointmentDto) {
         if (appointmentDto == null) {

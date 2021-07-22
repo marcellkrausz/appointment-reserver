@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserver.controllers;
 
-import com.marcellkrausz.appointmentreserver.dto.CityDto;
+import com.marcellkrausz.appointmentreserver.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserver.models.City;
 import com.marcellkrausz.appointmentreserver.services.CityService;
 import org.springframework.web.bind.annotation.*;

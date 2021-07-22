@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserver.controllers;
 
-import com.marcellkrausz.appointmentreserver.dto.AppointmentDto;
+import com.marcellkrausz.appointmentreserver.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserver.models.Appointment;
 import com.marcellkrausz.appointmentreserver.services.AppointmentService;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +37,7 @@ public class AppointmentController {
         appointmentService.saveAppointment(appointmentDto);
     }
 
-    @DeleteMapping("/appointments")
+    @DeleteMapping("/appointments/{id}")
     public void delete(@PathVariable("id") Long id) {
         appointmentService.deleteAppointmentById(id);
     }

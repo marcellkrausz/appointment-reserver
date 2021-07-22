@@ -1,6 +1,8 @@
 package com.marcellkrausz.appointmentreserver.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,14 +14,16 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "Appointment start date is required.")
+
     private LocalDateTime appointmentDateStart;
-    @NotBlank(message = "Appointment end date is required.")
+
     private LocalDateTime appointmentDateEnd;
 
 

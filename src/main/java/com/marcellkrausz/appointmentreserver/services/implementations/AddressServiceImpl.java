@@ -1,10 +1,11 @@
-package com.marcellkrausz.appointmentreserver.services;
+package com.marcellkrausz.appointmentreserver.services.implementations;
 
-import com.marcellkrausz.appointmentreserver.dto.AddressDto;
+import com.marcellkrausz.appointmentreserver.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserver.converters.AddressDtoToAddress;
 import com.marcellkrausz.appointmentreserver.converters.AddressToAddressDto;
 import com.marcellkrausz.appointmentreserver.models.Address;
 import com.marcellkrausz.appointmentreserver.repositories.AddressRepository;
+import com.marcellkrausz.appointmentreserver.services.AddressService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

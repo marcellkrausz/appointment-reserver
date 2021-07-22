@@ -1,10 +1,11 @@
-package com.marcellkrausz.appointmentreserver.services;
+package com.marcellkrausz.appointmentreserver.services.implementations;
 
-import com.marcellkrausz.appointmentreserver.dto.CustomerDto;
+import com.marcellkrausz.appointmentreserver.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserver.converters.CustomerDtoToCustomer;
 import com.marcellkrausz.appointmentreserver.converters.CustomerToCustomerDto;
 import com.marcellkrausz.appointmentreserver.models.Customer;
 import com.marcellkrausz.appointmentreserver.repositories.CustomerRepository;
+import com.marcellkrausz.appointmentreserver.services.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

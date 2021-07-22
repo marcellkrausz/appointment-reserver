@@ -1,7 +1,8 @@
 package com.marcellkrausz.appointmentreserver.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +12,8 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
 
     @Id
@@ -19,10 +22,9 @@ public class Address {
     @NotBlank(message = "Street is required.")
     @Size(max = 150, message = "Street name length should be 150 characters long.")
     private String street;
-    @NotBlank(message = "House number is required")
+
     private Integer houseNumber;
 
-    @NotBlank(message = "City is required")
     @ManyToOne
     private City city;
 }

@@ -2,7 +2,7 @@ package com.marcellkrausz.appointmentreserver.services;
 
 
 
-import com.marcellkrausz.appointmentreserver.dto.CosmeticServiceDto;
+import com.marcellkrausz.appointmentreserver.models.dto.CosmeticServiceDto;
 import com.marcellkrausz.appointmentreserver.models.CosmeticService;
 
 import java.util.Set;

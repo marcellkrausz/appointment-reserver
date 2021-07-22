@@ -1,15 +1,16 @@
-package com.marcellkrausz.appointmentreserver.dto;
+package com.marcellkrausz.appointmentreserver.models.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
-public class CityDto {
+public class CosmeticServiceDto {
+
     private Long id;
     private String name;
-    private int postalCode;
+    private Integer price;
+    private Integer minutes;
 }

@@ -37,7 +37,7 @@ public class CustomerController {
         customerService.saveCustomer(customerDto);
     }
 
-    @DeleteMapping("/customer")
+    @DeleteMapping("/customer/{id}")
     public void delete(@PathVariable("id") Long id) {
         customerService.deleteCustomerById(id);
     }

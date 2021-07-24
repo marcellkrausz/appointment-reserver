@@ -24,9 +24,9 @@ public class CosmeticService {
     @NotBlank(message = "Cosmetic Service name is required.")
     @Size(min = 5 , max = 150, message = "Cosmetic service name length should be between 5 and 150.")
     private String name;
-    @NotBlank(message = "Price is required.")
+
     private Integer price;
-    @NotBlank(message = "Service length is required")
+
     private Integer minutes;
 
     @ManyToMany(mappedBy = "cosmeticServices")

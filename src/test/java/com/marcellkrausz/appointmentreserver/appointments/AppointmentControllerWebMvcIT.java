@@ -62,7 +62,7 @@ public class AppointmentControllerWebMvcIT {
                 , Set.of(cosmeticService));
         when(appointmentService.getAllAppointment()).thenReturn(Set.of(appointment));
 
-        mockMvc.perform(get("/appointments")).andExpect(status().isOk())
+        this.mockMvc.perform(get("/appointments")).andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].id", is(appointment.getId().intValue())))
                 .andExpect(jsonPath("$[0].appointmentDateStart", is("2021-07-18T15:00:00")))
@@ -100,9 +100,10 @@ public class AppointmentControllerWebMvcIT {
                 , LocalDateTime.of(2021, 07, 18, 14, 00, 00)
                 , customer
                 , Set.of(cosmeticService));
+
         when(appointmentService.getAppointmentById(1L)).thenReturn(appointment);
 
-        mockMvc.perform(get("/appointments/1")).andExpect(status().isOk())
+        this.mockMvc.perform(get("/appointments/1")).andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(appointment.getId().intValue())))
                 .andExpect(jsonPath("$.appointmentDateStart", is("2021-07-18T15:00:00")))
                 .andExpect(jsonPath("$.appointmentDateEnd", is("2021-07-18T14:00:00")))

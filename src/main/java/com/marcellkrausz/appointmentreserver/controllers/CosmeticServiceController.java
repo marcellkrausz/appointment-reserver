@@ -37,7 +37,7 @@ public class CosmeticServiceController {
         cosmeticServiceService.saveCosmeticService(cosmeticServiceDto);
     }
 
-    @DeleteMapping("/cosmeticservice")
+    @DeleteMapping("/cosmeticservice/{id}")
     public void delete(@PathVariable("id") Long id) {
         cosmeticServiceService.deleteCosmeticServiceById(id);
     }

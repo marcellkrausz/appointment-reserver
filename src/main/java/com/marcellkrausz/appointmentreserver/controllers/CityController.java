@@ -36,4 +36,9 @@ public class CityController {
         cityDto.setId(id);
         cityService.saveCity(cityDto);
     }
+
+    @DeleteMapping("/city/{id}")
+    public void deleteById(@PathVariable("id") Long id) {
+        cityService.deleteCityById(id);
+    }
 }

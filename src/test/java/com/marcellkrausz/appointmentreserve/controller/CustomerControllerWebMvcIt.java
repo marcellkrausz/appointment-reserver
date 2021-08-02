@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserve;
+package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.CustomerController;
 import com.marcellkrausz.appointmentreserve.models.Customer;
@@ -86,6 +86,25 @@ public class CustomerControllerWebMvcIt {
                 .content(json)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    void testUpdateCustomer() throws Exception {
+        JSONObject customerJson = new JSONObject();
+        customerJson.put("id", 1);
+        customerJson.put("firstName", "Marcell");
+        customerJson.put("lastName", "Krausz");
+        customerJson.put("phoneNumber", "067894444");
+        customerJson.put("email", "marcell@gmail.com");
+
+        String json = customerJson.toJSONString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .put("/customer/{id}", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent());
     }
 
     @Test

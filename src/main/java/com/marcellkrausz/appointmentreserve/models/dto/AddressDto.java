@@ -16,8 +16,8 @@ import javax.validation.constraints.Size;
 public class AddressDto {
 
     private Long id;
-    @NotBlank(message = "Cosmetic Service name is required.")
-    @Size(min = 1 , max = 150, message = "Street length should be between 1 and 150.")
+    @NotBlank(message = "Street name is required.")
+    @Size(min = 3 , max = 150, message = "Street length should be between 1 and 150.")
     private String street;
 
     @NotNull

@@ -8,6 +8,7 @@ import com.marcellkrausz.appointmentreserve.repositories.CosmeticServiceReposito
 import com.marcellkrausz.appointmentreserve.services.CosmeticServiceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -43,6 +44,7 @@ public class CosmeticServiceServiceImpl implements CosmeticServiceService {
         return cosmeticServiceOptional.get();
     }
 
+    @Transactional
     @Override
     public CosmeticServiceDto saveCosmeticService(CosmeticServiceDto cosmeticServiceDto) {
         CosmeticService detachedCosmeticService = cosmeticServiceDtoToCosmeticService.convert(cosmeticServiceDto);

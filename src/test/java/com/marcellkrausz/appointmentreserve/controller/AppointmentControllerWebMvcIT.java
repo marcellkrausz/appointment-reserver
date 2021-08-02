@@ -1,7 +1,6 @@
-package com.marcellkrausz.appointmentreserve;
+package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.AppointmentController;
-import com.marcellkrausz.appointmentreserve.models.*;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserve.models.dto.CosmeticServiceDto;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
@@ -103,16 +102,6 @@ public class AppointmentControllerWebMvcIT {
 
     @Test
     void testSaveAppointment() throws Exception {
-        JSONObject cityJson = new JSONObject();
-        cityJson.put("id", 1);
-        cityJson.put("name", "Sülysáp");
-        cityJson.put("postalCode", 1122);
-
-        JSONObject addressJson = new JSONObject();
-        addressJson.put("id", 1);
-        addressJson.put("street", "Ady");
-        addressJson.put("houseNumber", 23);
-        addressJson.put("city", cityJson);
 
         JSONObject customerJson = new JSONObject();
         customerJson.put("id", 1);
@@ -120,7 +109,7 @@ public class AppointmentControllerWebMvcIT {
         customerJson.put("lastName", "Nagy");
         customerJson.put("email", "adam@gmail.com");
         customerJson.put("phoneNumber", "06305554646");
-        customerJson.put("address", addressJson);
+        customerJson.put("addressId", 1);
 
         JSONObject cosmeticServiceJson = new JSONObject();
         cosmeticServiceJson.put("id", 1);
@@ -130,8 +119,8 @@ public class AppointmentControllerWebMvcIT {
 
         JSONObject appointmentJson = new JSONObject();
         appointmentJson.put("id", 1);
-        appointmentJson.put("appointmentDateStart", "2021-07-18T15:00:00");
-        appointmentJson.put("appointmentDateEnd", "2021-07-18T14:00:00");
+        appointmentJson.put("appointmentDateStart", "2022-07-18T15:00:00");
+        appointmentJson.put("appointmentDateEnd", "2022-07-18T14:00:00");
         appointmentJson.put("customer", customerJson);
         appointmentJson.put("cosmeticServices", Set.of(cosmeticServiceJson));
 
@@ -142,6 +131,102 @@ public class AppointmentControllerWebMvcIT {
                 .content(json)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    void testSaveAppointmentWithInvalidDateStart() throws Exception {
+        JSONObject customerJson = new JSONObject();
+        customerJson.put("id", 1);
+        customerJson.put("firstName", "Ádám");
+        customerJson.put("lastName", "Nagy");
+        customerJson.put("email", "adam@gmail.com");
+        customerJson.put("phoneNumber", "06305554646");
+        customerJson.put("addressId", 1);
+
+        JSONObject cosmeticServiceJson = new JSONObject();
+        cosmeticServiceJson.put("id", 1);
+        cosmeticServiceJson.put("minutes", 21);
+        cosmeticServiceJson.put("name", "Próba");
+        cosmeticServiceJson.put("price", 21344);
+
+        JSONObject appointmentJson = new JSONObject();
+        appointmentJson.put("id", 1);
+        appointmentJson.put("appointmentDateStart", "2021-07-18T15:00:00");
+        appointmentJson.put("appointmentDateEnd", "2022-07-18T14:00:00");
+        appointmentJson.put("customer", customerJson);
+        appointmentJson.put("cosmeticServices", Set.of(cosmeticServiceJson));
+
+        String json = appointmentJson.toJSONString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/appointment")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testSaveAppointmentWithInvalidDateEnd() throws Exception {
+        JSONObject customerJson = new JSONObject();
+        customerJson.put("id", 1);
+        customerJson.put("firstName", "Ádám");
+        customerJson.put("lastName", "Nagy");
+        customerJson.put("email", "adam@gmail.com");
+        customerJson.put("phoneNumber", "06305554646");
+        customerJson.put("addressId", 1);
+
+        JSONObject cosmeticServiceJson = new JSONObject();
+        cosmeticServiceJson.put("id", 1);
+        cosmeticServiceJson.put("minutes", 21);
+        cosmeticServiceJson.put("name", "Próba");
+        cosmeticServiceJson.put("price", 21344);
+
+        JSONObject appointmentJson = new JSONObject();
+        appointmentJson.put("id", 1);
+        appointmentJson.put("appointmentDateStart", "2022-07-18T15:00:00");
+        appointmentJson.put("appointmentDateEnd", "2021-07-18T14:00:00");
+        appointmentJson.put("customer", customerJson);
+        appointmentJson.put("cosmeticServices", Set.of(cosmeticServiceJson));
+
+        String json = appointmentJson.toJSONString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/appointment")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testUpdateAppointment() throws Exception {
+        JSONObject customerJson = new JSONObject();
+        customerJson.put("id", 1);
+        customerJson.put("firstName", "Ádám");
+        customerJson.put("lastName", "Nagy");
+        customerJson.put("email", "adam@gmail.com");
+        customerJson.put("phoneNumber", "06305554646");
+        customerJson.put("addressId", 1);
+
+        JSONObject cosmeticServiceJson = new JSONObject();
+        cosmeticServiceJson.put("id", 1);
+        cosmeticServiceJson.put("minutes", 21);
+        cosmeticServiceJson.put("name", "Próba");
+        cosmeticServiceJson.put("price", 21344);
+
+        JSONObject appointmentJson = new JSONObject();
+        appointmentJson.put("id", 1);
+        appointmentJson.put("appointmentDateStart", "2022-07-18T15:00:00");
+        appointmentJson.put("appointmentDateEnd", "2022-07-18T14:00:00");
+        appointmentJson.put("customer", customerJson);
+        appointmentJson.put("cosmeticServices", Set.of(cosmeticServiceJson));
+
+        String json = appointmentJson.toJSONString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/appointment/{id}", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent());
     }
 
     @Test

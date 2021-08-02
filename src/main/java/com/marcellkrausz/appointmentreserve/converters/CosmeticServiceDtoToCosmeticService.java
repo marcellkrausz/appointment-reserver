@@ -17,6 +17,7 @@ public class CosmeticServiceDtoToCosmeticService implements Converter<CosmeticSe
         if (cosmeticServiceDto == null) {
             return null;
         }
+
         final CosmeticService cosmeticService = new CosmeticService();
         cosmeticService.setId(cosmeticServiceDto.getId());
         cosmeticService.setName(cosmeticService.getName());

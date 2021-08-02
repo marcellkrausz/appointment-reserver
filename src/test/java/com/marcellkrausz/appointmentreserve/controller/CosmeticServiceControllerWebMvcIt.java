@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserve;
+package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.CosmeticServiceController;
 import com.marcellkrausz.appointmentreserve.models.*;
@@ -70,7 +70,7 @@ public class CosmeticServiceControllerWebMvcIt {
     void testSaveCosmeticService() throws Exception {
         JSONObject cosmeticJson = new JSONObject();
         cosmeticJson.put("id", 1);
-        cosmeticJson.put("name", "Próba");
+        cosmeticJson.put("name", "Próba1");
         cosmeticJson.put("minutes", 30);
         cosmeticJson.put("price", 3000);
 
@@ -82,6 +82,24 @@ public class CosmeticServiceControllerWebMvcIt {
                 .content(json)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    void testUpdateCosmeticService() throws Exception {
+        JSONObject cosmeticJson = new JSONObject();
+        cosmeticJson.put("id", 1);
+        cosmeticJson.put("name", "Próba1");
+        cosmeticJson.put("minutes", 30);
+        cosmeticJson.put("price", 3000);
+
+        String json = cosmeticJson.toJSONString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .put("/cosmeticservice/{id}", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent());
     }
 
     @Test

@@ -8,6 +8,7 @@ import com.marcellkrausz.appointmentreserve.repositories.AppointmentRepository;
 import com.marcellkrausz.appointmentreserve.services.AppointmentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -43,6 +44,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentToAppointmentDto.convert(appointmentOptional.get());
     }
 
+    @Transactional
     @Override
     public AppointmentDto saveAppointment(AppointmentDto appointmentDto) {
         Appointment detachedAppointment = appointmentDtoToAppointment.convert(appointmentDto);

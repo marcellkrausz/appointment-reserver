@@ -8,6 +8,7 @@ import com.marcellkrausz.appointmentreserve.repositories.CustomerRepository;
 import com.marcellkrausz.appointmentreserve.services.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -43,6 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
         return customerOptional.get();
     }
 
+    @Transactional
     @Override
     public CustomerDto saveCustomer(CustomerDto customerDto) {
         Customer detachedCustomer = customerDtoToCustomer.convert(customerDto);

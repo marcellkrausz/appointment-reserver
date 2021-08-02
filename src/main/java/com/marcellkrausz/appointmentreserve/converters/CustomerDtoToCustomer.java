@@ -18,6 +18,7 @@ public class CustomerDtoToCustomer implements Converter<CustomerDto, Customer> {
         if (customerDto == null) {
             return null;
         }
+
         final Customer customer = new Customer();
         customer.setId(customerDto.getId());
         customer.setFirstName(customerDto.getFirstName());
@@ -28,6 +29,7 @@ public class CustomerDtoToCustomer implements Converter<CustomerDto, Customer> {
         if (customerDto.getAddressId() != null) {
             Address address = new Address();
             address.setId(customerDto.getAddressId());
+            customer.setAddress(address);
         }
         return customer;
     }

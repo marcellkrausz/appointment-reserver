@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 public class CityDto {
 
     private Long id;
-    @NotBlank(message = "Cosmetic Service name is required.")
+    @NotBlank(message = "City name is required.")
     @Size(min = 5 , max = 150, message = "City name length should be between 5 and 150.")
     private String name;
 

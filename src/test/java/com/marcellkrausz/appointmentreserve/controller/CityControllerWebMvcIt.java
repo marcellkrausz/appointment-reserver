@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserve;
+package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.CityController;
 import com.marcellkrausz.appointmentreserve.models.City;
@@ -75,6 +75,22 @@ public class CityControllerWebMvcIt {
                 .content(json)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    void TestUpdateCity() throws Exception {
+        JSONObject cityJson = new JSONObject();
+        cityJson.put("id", 1);
+        cityJson.put("name", "Sülysáp");
+        cityJson.put("postalCode", 4000);
+
+        String json = cityJson.toJSONString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/city/{id}", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent());
     }
 
     @Test

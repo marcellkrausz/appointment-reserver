@@ -38,4 +38,19 @@ public class City {
     public void addAddress(Address address) {
         this.addresses.add(address);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        City city = (City) o;
+
+        return id.equals(city.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

@@ -1,9 +1,6 @@
 package com.marcellkrausz.appointmentreserve.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -22,9 +19,23 @@ public class Address {
     @NotBlank(message = "Street is required.")
     @Size(max = 150, message = "Street name length should be 150 characters long.")
     private String street;
-
     private Integer houseNumber;
 
     @ManyToOne
     private City city;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Address address = (Address) o;
+
+        return id.equals(address.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

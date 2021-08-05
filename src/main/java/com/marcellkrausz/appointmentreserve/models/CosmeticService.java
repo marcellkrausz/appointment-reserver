@@ -35,4 +35,19 @@ public class CosmeticService {
         this.price = price;
         this.minutes = minutes;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CosmeticService that = (CosmeticService) o;
+
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

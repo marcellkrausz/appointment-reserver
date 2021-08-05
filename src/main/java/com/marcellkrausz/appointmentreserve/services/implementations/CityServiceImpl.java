@@ -1,5 +1,6 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
+import com.marcellkrausz.appointmentreserve.exception.CityNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserve.converters.CityDtoToCity;
 import com.marcellkrausz.appointmentreserve.converters.CityToCityDto;
@@ -38,9 +39,8 @@ public class CityServiceImpl implements CityService {
     @Override
     public City getCityById(Long id) {
         Optional<City> cityOptional = cityRepository.findById(id);
-
         if (cityOptional.isEmpty()) {
-            throw new RuntimeException("City not found in database");
+            throw new CityNotFoundException("City not found in database");
         }
         return cityOptional.get();
     }

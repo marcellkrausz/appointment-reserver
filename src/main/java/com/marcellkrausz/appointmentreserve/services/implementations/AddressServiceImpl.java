@@ -1,5 +1,7 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
+import com.marcellkrausz.appointmentreserve.exception.AddressNotFoundException;
+import com.marcellkrausz.appointmentreserve.exception.ApiRequestException;
 import com.marcellkrausz.appointmentreserve.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserve.converters.AddressDtoToAddress;
 import com.marcellkrausz.appointmentreserve.converters.AddressToAddressDto;
@@ -38,7 +40,7 @@ public class AddressServiceImpl implements AddressService {
     public AddressDto getAddressById(Long id) {
         Optional<Address> addressOptional = addressRepository.findById(id);
         if (addressOptional.isEmpty()) {
-            throw new RuntimeException("Address not found");
+            throw new AddressNotFoundException("Address not found");
         }
         return addressToAddressDto.convert(addressOptional.get());
     }

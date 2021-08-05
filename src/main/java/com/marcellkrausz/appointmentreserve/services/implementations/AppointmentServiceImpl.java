@@ -1,5 +1,7 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
+import com.marcellkrausz.appointmentreserve.exception.ApiRequestException;
+import com.marcellkrausz.appointmentreserve.exception.AppointmentNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserve.converters.AppointmentDtoToAppointment;
 import com.marcellkrausz.appointmentreserve.converters.AppointmentToAppointmentDto;
@@ -39,7 +41,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     public AppointmentDto getAppointmentById(Long id) {
         Optional<Appointment> appointmentOptional = appointmentRepository.findById(id);
         if (appointmentOptional.isEmpty()) {
-            throw new RuntimeException("Appointment not found");
+            throw new AppointmentNotFoundException("Appointment not found");
         }
         return appointmentToAppointmentDto.convert(appointmentOptional.get());
     }

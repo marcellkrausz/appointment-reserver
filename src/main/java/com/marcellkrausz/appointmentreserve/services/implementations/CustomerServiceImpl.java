@@ -1,5 +1,6 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
+import com.marcellkrausz.appointmentreserve.exception.CustomerNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserve.converters.CustomerDtoToCustomer;
 import com.marcellkrausz.appointmentreserve.converters.CustomerToCustomerDto;
@@ -39,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer getCustomerById(Long id) {
         Optional<Customer> customerOptional = customerRepository.findById(id);
         if (customerOptional.isEmpty()) {
-            throw new RuntimeException("Customer not found");
+            throw new CustomerNotFoundException("Customer not found");
         }
         return customerOptional.get();
     }

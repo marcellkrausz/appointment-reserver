@@ -51,8 +51,4 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
-
-    public void addAppointment(Appointment appointment) {
-        this.customerAppointments.add(appointment);
-    }
 }

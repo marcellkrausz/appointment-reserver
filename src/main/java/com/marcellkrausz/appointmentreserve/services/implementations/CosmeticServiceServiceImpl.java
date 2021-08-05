@@ -1,5 +1,6 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
+import com.marcellkrausz.appointmentreserve.exception.CosmeticServiceNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.CosmeticServiceDto;
 import com.marcellkrausz.appointmentreserve.converters.CosmeticServiceDtoToCosmeticService;
 import com.marcellkrausz.appointmentreserve.converters.CosmeticServiceToCosmeticServiceDto;
@@ -39,7 +40,7 @@ public class CosmeticServiceServiceImpl implements CosmeticServiceService {
     public CosmeticService getCosmeticServiceById(Long id) {
         Optional<CosmeticService> cosmeticServiceOptional = cosmeticServiceRepository.findById(id);
         if (cosmeticServiceOptional.isEmpty()) {
-            throw new RuntimeException("Cosmetic Service not found");
+            throw new CosmeticServiceNotFoundException("Cosmetic Service not found");
         }
         return cosmeticServiceOptional.get();
     }

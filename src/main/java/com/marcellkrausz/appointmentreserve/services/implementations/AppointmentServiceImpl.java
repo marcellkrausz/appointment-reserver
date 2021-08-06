@@ -1,6 +1,5 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
-import com.marcellkrausz.appointmentreserve.exception.ApiRequestException;
 import com.marcellkrausz.appointmentreserve.exception.AppointmentNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserve.converters.AppointmentDtoToAppointment;
@@ -34,6 +33,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     public Set<AppointmentDto> getAllAppointment() {
         Set<Appointment> appointments = new HashSet<>();
         appointmentRepository.findAll().iterator().forEachRemaining(appointments::add);
+        if (appointments.isEmpty()) {
+            throw new AppointmentNotFoundException("Appointments not found in database.");
+        }
         return appointmentToAppointmentDto.convertSet(appointments);
     }
 
@@ -58,6 +60,10 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void deleteAppointmentById(Long id) {
+        Optional<Appointment> appointmentOptional = appointmentRepository.findById(id);
+        if (appointmentOptional.isEmpty()) {
+            throw new AppointmentNotFoundException("Appointment not found.");
+        }
         appointmentRepository.deleteById(id);
         log.debug("Deleted appointment id: " + id);
     }

@@ -20,11 +20,11 @@ POST /city/create - Create city via JSON.
 DELETE /city/delete/{id} - Delete city by its id.
 
 3.Operations on CosmeticService
-GET /cosmeticService - Retrievel all cosmeticService from database.
-GET /cosmeticService/{id} - Retrieve specific cosmeticService by its id.
-PUT /cosmeticService/update/{id} - Update cosmeticService via JSON.
-POST /cosmeticService/create - Create cosmeticService via JSON.
-DELETE /cosmeticService/delete/{id} - Delete cosmeticService by its id.
+GET /beautyCare - Retrievel all beautyCare from database.
+GET /beautyCare/{id} - Retrieve specific beautyCare by its id.
+PUT /beautyCare/update/{id} - Update beautyCare via JSON.
+POST /beautyCare/create - Create beautyCare via JSON.
+DELETE /beautyCare/delete/{id} - Delete beautyCare by its id.
 
 4.Operations on Customer
 GET /customer - Retrievel all customer from database.

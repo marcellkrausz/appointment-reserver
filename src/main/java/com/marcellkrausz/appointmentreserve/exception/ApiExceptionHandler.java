@@ -15,7 +15,7 @@ public class ApiExceptionHandler {
             AddressNotFoundException.class,
             AppointmentNotFoundException.class,
             CityNotFoundException.class,
-            CosmeticServiceNotFoundException.class,
+            BeautyCareNotFoundException.class,
             CustomerNotFoundException.class})
 
     public ResponseEntity<Object> handleApiRequestException(RuntimeException e) {
@@ -25,4 +25,5 @@ public class ApiExceptionHandler {
                 ZonedDateTime.now(ZoneId.of("Z")));
         return new ResponseEntity<>(apiException, badRequest);
     }
+
 }

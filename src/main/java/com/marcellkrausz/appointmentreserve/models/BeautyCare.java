@@ -1,7 +1,6 @@
 package com.marcellkrausz.appointmentreserve.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +16,7 @@ import java.util.Set;
 @Entity
 @JsonIgnoreProperties("serviceAppointments")
 @NoArgsConstructor
-public class CosmeticService {
+public class BeautyCare {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +25,10 @@ public class CosmeticService {
     private Integer price;
     private Integer minutes;
 
-    @ManyToMany(mappedBy = "cosmeticServices")
+    @ManyToMany(mappedBy = "beautyCares")
     private Set<Appointment> serviceAppointments = new HashSet<>();
 
-    public CosmeticService(Long id, @NotBlank(message = "Cosmetic Service name is required.") @Size(min = 5, max = 150, message = "Cosmetic service name length should be between 5 and 150.") String name, Integer price, Integer minutes) {
+    public BeautyCare(Long id, @NotBlank(message = "Cosmetic Service name is required.") @Size(min = 5, max = 150, message = "Cosmetic service name length should be between 5 and 150.") String name, Integer price, Integer minutes) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -41,7 +40,7 @@ public class CosmeticService {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CosmeticService that = (CosmeticService) o;
+        BeautyCare that = (BeautyCare) o;
 
         return id.equals(that.id);
     }

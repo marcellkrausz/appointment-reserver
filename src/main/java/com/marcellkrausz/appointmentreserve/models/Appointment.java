@@ -31,13 +31,13 @@ public class Appointment {
     private Customer customer;
 
     @ManyToMany
-    @JoinTable(name = "appointment_cosmetic_service",
+    @JoinTable(name = "appointment_beauty_care",
     joinColumns = @JoinColumn(name = "appointment_id"),
-    inverseJoinColumns = @JoinColumn(name = "cosmetic_service_id"))
-    private Set<CosmeticService> cosmeticServices = new HashSet<>();
+    inverseJoinColumns = @JoinColumn(name = "beauty_care_id"))
+    private Set<BeautyCare> beautyCares = new HashSet<>();
 
     public Integer getPrice() {
-        return cosmeticServices.stream().mapToInt(CosmeticService::getPrice).sum();
+        return beautyCares.stream().mapToInt(BeautyCare::getPrice).sum();
     }
 
     @Override

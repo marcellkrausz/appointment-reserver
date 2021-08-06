@@ -1,8 +1,8 @@
 package com.marcellkrausz.appointmentreserve;
 
 import com.marcellkrausz.appointmentreserve.models.Address;
+import com.marcellkrausz.appointmentreserve.models.BeautyCare;
 import com.marcellkrausz.appointmentreserve.models.City;
-import com.marcellkrausz.appointmentreserve.models.CosmeticService;
 import com.marcellkrausz.appointmentreserve.models.Customer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,9 +54,9 @@ class AppointmentReserveApplicationTests {
 
     @Test
     public void testCosmeticServiceById() {
-        CosmeticService excepted = new CosmeticService(1L, "Nyomásterápia", 3000, 30);
-        ResponseEntity<CosmeticService> responseEntity = restTemplate.getForEntity(BASE_URL + "/cosmeticservice/1", CosmeticService.class);
-        CosmeticService actual = responseEntity.getBody();
+        BeautyCare excepted = new BeautyCare(1L, "Nyomásterápia", 3000, 30);
+        ResponseEntity<BeautyCare> responseEntity = restTemplate.getForEntity(BASE_URL + "/cosmeticservice/1", BeautyCare.class);
+        BeautyCare actual = responseEntity.getBody();
 
         Assertions.assertEquals(excepted.getName(), actual.getName());
     }

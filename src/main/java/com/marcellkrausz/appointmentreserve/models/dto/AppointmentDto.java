@@ -23,5 +23,5 @@ public class AppointmentDto {
     @FutureOrPresent
     private LocalDateTime appointmentDateEnd;
     private CustomerDto customerDto;
-    private Set<CosmeticServiceDto> services = new HashSet<>();
+    private Set<BeautyCareDto> services = new HashSet<>();
 }

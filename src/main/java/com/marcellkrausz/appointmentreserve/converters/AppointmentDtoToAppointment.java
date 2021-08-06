@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class AppointmentDtoToAppointment implements Converter<AppointmentDto, Appointment> {
 
-    private final CosmeticServiceDtoToCosmeticService cosmeticServiceDtoToCosmeticService;
+    private final BeautyCareDtoToBeautyCare beautyCareDtoToBeautyCare;
     private final CustomerDtoToCustomer customerDtoToCustomer;
 
-    public AppointmentDtoToAppointment(CosmeticServiceDtoToCosmeticService cosmeticServiceDtoToCosmeticService, CustomerDtoToCustomer customerDtoToCustomer) {
-        this.cosmeticServiceDtoToCosmeticService = cosmeticServiceDtoToCosmeticService;
+    public AppointmentDtoToAppointment(BeautyCareDtoToBeautyCare beautyCareDtoToBeautyCare, CustomerDtoToCustomer customerDtoToCustomer) {
+        this.beautyCareDtoToBeautyCare = beautyCareDtoToBeautyCare;
         this.customerDtoToCustomer = customerDtoToCustomer;
     }
 
@@ -34,8 +34,8 @@ public class AppointmentDtoToAppointment implements Converter<AppointmentDto, Ap
 
         if (appointmentDto.getServices() != null && appointmentDto.getServices().size() > 0) {
             appointmentDto.getServices()
-                    .forEach(customerServiceCommand -> appointment.getCosmeticServices()
-                    .add(cosmeticServiceDtoToCosmeticService.convert(customerServiceCommand)));
+                    .forEach(customerServiceCommand -> appointment.getBeautyCares()
+                    .add(beautyCareDtoToBeautyCare.convert(customerServiceCommand)));
         }
 
         return appointment;

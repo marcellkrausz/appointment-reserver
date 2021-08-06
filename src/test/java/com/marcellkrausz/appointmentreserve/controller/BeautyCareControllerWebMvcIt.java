@@ -1,8 +1,8 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
-import com.marcellkrausz.appointmentreserve.controllers.CosmeticServiceController;
+import com.marcellkrausz.appointmentreserve.controllers.BeautyCareController;
 import com.marcellkrausz.appointmentreserve.models.*;
-import com.marcellkrausz.appointmentreserve.services.CosmeticServiceService;
+import com.marcellkrausz.appointmentreserve.services.BeautyCareService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,49 +21,49 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(CosmeticServiceController.class)
-public class CosmeticServiceControllerWebMvcIt {
+@WebMvcTest(BeautyCareController.class)
+public class BeautyCareControllerWebMvcIt {
 
     @MockBean
-    CosmeticServiceService cosmeticServiceService;
+    BeautyCareService beautyCareService;
 
     @Autowired
     MockMvc mockMvc;
 
     @Test
     void testListCosmeticServices() throws Exception {
-        CosmeticService cosmeticService = new CosmeticService();
-        cosmeticService.setId(1L);
-        cosmeticService.setName("Valami");
-        cosmeticService.setMinutes(30);
-        cosmeticService.setPrice(3000);
+        BeautyCare beautyCare = new BeautyCare();
+        beautyCare.setId(1L);
+        beautyCare.setName("Valami");
+        beautyCare.setMinutes(30);
+        beautyCare.setPrice(3000);
 
-        when(cosmeticServiceService.getAllCosmeticService()).thenReturn(Set.of(cosmeticService));
+        when(beautyCareService.getAllBeautyCare()).thenReturn(Set.of(beautyCare));
 
         this.mockMvc.perform(get("/cosmeticservice")).andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].id", is(cosmeticService.getId().intValue())))
-                .andExpect(jsonPath("$[0].name", is(cosmeticService.getName())))
-                .andExpect(jsonPath("$[0].minutes", is(cosmeticService.getMinutes())))
-                .andExpect(jsonPath("$[0].price", is(cosmeticService.getPrice())));
+                .andExpect(jsonPath("$[0].id", is(beautyCare.getId().intValue())))
+                .andExpect(jsonPath("$[0].name", is(beautyCare.getName())))
+                .andExpect(jsonPath("$[0].minutes", is(beautyCare.getMinutes())))
+                .andExpect(jsonPath("$[0].price", is(beautyCare.getPrice())));
     }
 
     @Test
     void testGetCosmeticServiceById() throws Exception {
 
-        CosmeticService cosmeticService = new CosmeticService();
-        cosmeticService.setId(1L);
-        cosmeticService.setMinutes(21);
-        cosmeticService.setName("Próba");
-        cosmeticService.setPrice(21344);
+        BeautyCare beautyCare = new BeautyCare();
+        beautyCare.setId(1L);
+        beautyCare.setMinutes(21);
+        beautyCare.setName("Próba");
+        beautyCare.setPrice(21344);
 
-        when(cosmeticServiceService.getCosmeticServiceById(1L)).thenReturn(cosmeticService);
+        when(beautyCareService.getBeautyCareById(1L)).thenReturn(beautyCare);
 
         this.mockMvc.perform(get("/cosmeticservice/1")).andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(cosmeticService.getId().intValue())))
-                .andExpect(jsonPath("$.name", is(cosmeticService.getName())))
-                .andExpect(jsonPath("$.minutes", is(cosmeticService.getMinutes())))
-                .andExpect(jsonPath("$.price", is(cosmeticService.getPrice())));
+                .andExpect(jsonPath("$.id", is(beautyCare.getId().intValue())))
+                .andExpect(jsonPath("$.name", is(beautyCare.getName())))
+                .andExpect(jsonPath("$.minutes", is(beautyCare.getMinutes())))
+                .andExpect(jsonPath("$.price", is(beautyCare.getPrice())));
     }
 
     @Test

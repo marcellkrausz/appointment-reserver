@@ -13,11 +13,11 @@ import java.util.Set;
 @Component
 public class AppointmentToAppointmentDto implements Converter<Appointment, AppointmentDto> {
 
-    private final CosmeticServiceToCosmeticServiceDto cosmeticServiceToCosmeticServiceDto;
+    private final BeautyCareToBeautyCareDto beautyCareToBeautyCareDto;
     private final CustomerToCustomerDto customerToCustomerDto;
 
-    public AppointmentToAppointmentDto(CosmeticServiceToCosmeticServiceDto cosmeticServiceToCosmeticServiceDto, CustomerToCustomerDto customerToCustomerDto) {
-        this.cosmeticServiceToCosmeticServiceDto = cosmeticServiceToCosmeticServiceDto;
+    public AppointmentToAppointmentDto(BeautyCareToBeautyCareDto beautyCareToBeautyCareDto, CustomerToCustomerDto customerToCustomerDto) {
+        this.beautyCareToBeautyCareDto = beautyCareToBeautyCareDto;
         this.customerToCustomerDto = customerToCustomerDto;
     }
 
@@ -35,8 +35,8 @@ public class AppointmentToAppointmentDto implements Converter<Appointment, Appoi
         appointmentDto.setAppointmentDateEnd(appointment.getAppointmentDateEnd());
         appointmentDto.setCustomerDto(customerToCustomerDto.convert(appointment.getCustomer()));
 
-        if (appointment.getCosmeticServices() != null && appointment.getCosmeticServices().size() > 0) {
-            appointment.getCosmeticServices().forEach(cosmeticService -> appointmentDto.getServices().add(cosmeticServiceToCosmeticServiceDto.convert(cosmeticService)));
+        if (appointment.getBeautyCares() != null && appointment.getBeautyCares().size() > 0) {
+            appointment.getBeautyCares().forEach(cosmeticService -> appointmentDto.getServices().add(beautyCareToBeautyCareDto.convert(cosmeticService)));
         }
         return appointmentDto;
     }

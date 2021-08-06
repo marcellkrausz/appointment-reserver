@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CosmeticServiceDto {
+public class BeautyCareDto {
 
     private Long id;
     @NotBlank(message = "Cosmetic Service name is required.")

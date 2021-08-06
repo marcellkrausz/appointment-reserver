@@ -2,7 +2,7 @@ package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.AppointmentController;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
-import com.marcellkrausz.appointmentreserve.models.dto.CosmeticServiceDto;
+import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserve.services.AppointmentService;
 
@@ -44,7 +44,7 @@ public class AppointmentControllerWebMvcIT {
         customerDto.setPhoneNumber("06305554646");
         customerDto.setAddressId(1L);
 
-        CosmeticServiceDto cosmeticService = new CosmeticServiceDto();
+        BeautyCareDto cosmeticService = new BeautyCareDto();
         cosmeticService.setId(1l);
         cosmeticService.setMinutes(21);
         cosmeticService.setName("Próba");
@@ -78,7 +78,7 @@ public class AppointmentControllerWebMvcIT {
         customerDto.setPhoneNumber("06305554646");
         customerDto.setAddressId(1L);
 
-        CosmeticServiceDto cosmeticService = new CosmeticServiceDto();
+        BeautyCareDto cosmeticService = new BeautyCareDto();
         cosmeticService.setId(1L);
         cosmeticService.setMinutes(21);
         cosmeticService.setName("Próba");

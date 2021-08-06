@@ -1,8 +1,8 @@
-INSERT INTO cosmetic_service (name, price, minutes) VALUES ('Nyomásterápia', 3000, 30);
-INSERT INTO cosmetic_service (name, price, minutes) VALUES ('Mezopen', 15000, 60);
-INSERT INTO cosmetic_service (name, price, minutes) VALUES ('Mezoterápiás testkezelés', 15000, 45);
-INSERT INTO cosmetic_service (name, price, minutes) VALUES ('Derma Clear kezelés problémás bőrre', 11000, 30);
-INSERT INTO cosmetic_service (name, price, minutes) VALUES ('Recorvery növényi őssejtes kezelés', 12000, 15);
+INSERT INTO beauty_care (name, price, minutes) VALUES ('Nyomásterápia', 3000, 30);
+INSERT INTO beauty_care (name, price, minutes) VALUES ('Mezopen', 15000, 60);
+INSERT INTO beauty_care (name, price, minutes) VALUES ('Mezoterápiás testkezelés', 15000, 45);
+INSERT INTO beauty_care (name, price, minutes) VALUES ('Derma Clear kezelés problémás bőrre', 11000, 30);
+INSERT INTO beauty_care (name, price, minutes) VALUES ('Recorvery növényi őssejtes kezelés', 12000, 15);
 
 INSERT INTO city (name, postal_code) VALUES ('Budapest',1038);
 INSERT INTO city (name, postal_code) VALUES ('Budapest',1111);
@@ -23,9 +23,9 @@ INSERT INTO appointment (appointment_date_start, appointment_date_end, customer_
 INSERT INTO appointment (appointment_date_start, appointment_date_end, customer_id) VALUES ('2021-07-17 09:00:00', '2021-07-17 9:15:00', 2);
 INSERT INTO appointment (appointment_date_start, appointment_date_end, customer_id) VALUES ('2021-07-18 09:00:00', '2021-07-18 09:30:00', 1);
 
-INSERT INTO appointment_cosmetic_service VALUES (1,1);
-INSERT INTO appointment_cosmetic_service VALUES (1,4);
-INSERT INTO appointment_cosmetic_service VALUES (2,2);
-INSERT INTO appointment_cosmetic_service VALUES (2,3);
-INSERT INTO appointment_cosmetic_service VALUES (3,5);
-INSERT INTO appointment_cosmetic_service VALUES (4,4);
+INSERT INTO appointment_beauty_care VALUES (1,1);
+INSERT INTO appointment_beauty_care VALUES (1,4);
+INSERT INTO appointment_beauty_care VALUES (2,2);
+INSERT INTO appointment_beauty_care VALUES (2,3);
+INSERT INTO appointment_beauty_care VALUES (3,5);
+INSERT INTO appointment_beauty_care VALUES (4,4);

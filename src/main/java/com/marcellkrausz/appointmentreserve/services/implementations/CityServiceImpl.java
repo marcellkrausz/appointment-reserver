@@ -33,6 +33,9 @@ public class CityServiceImpl implements CityService {
     public Set<City> getAllCities() {
         Set<City> cities = new HashSet<>();
         cityRepository.findAll().iterator().forEachRemaining(cities::add);
+        if (cities.isEmpty()) {
+            throw new CityNotFoundException("Cities not found in database.");
+        }
         return cities;
     }
 
@@ -56,6 +59,8 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public void deleteCityById(Long id) {
+        getCityById(id);
+
         cityRepository.deleteById(id);
         log.debug("Deleted city id: " + id);
     }

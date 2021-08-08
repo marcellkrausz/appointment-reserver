@@ -33,6 +33,9 @@ public class BeautyCareServiceImpl implements BeautyCareService {
     public Set<BeautyCare> getAllBeautyCare() {
         Set<BeautyCare> beautyCares = new HashSet<>();
         beautyCarteRepository.findAll().iterator().forEachRemaining(beautyCares::add);
+        if (beautyCares.isEmpty()) {
+            throw new BeautyCareNotFoundException("Beauty cares not found in database.");
+        }
         return beautyCares;
     }
 
@@ -57,6 +60,8 @@ public class BeautyCareServiceImpl implements BeautyCareService {
 
     @Override
     public void deleteBeautyCareById(Long id) {
+        getBeautyCareById(id);
+
         beautyCarteRepository.deleteById(id);
         log.debug("Deleted beauty care id: " + id);
     }

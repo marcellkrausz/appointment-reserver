@@ -3,7 +3,6 @@ package com.marcellkrausz.appointmentreserve.services;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserve.models.Appointment;
 
-import java.util.List;
 import java.util.Set;
 
 public interface AppointmentService {

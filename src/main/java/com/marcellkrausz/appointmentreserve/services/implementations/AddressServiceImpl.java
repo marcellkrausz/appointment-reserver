@@ -1,7 +1,6 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
 import com.marcellkrausz.appointmentreserve.exception.AddressNotFoundException;
-import com.marcellkrausz.appointmentreserve.exception.ApiRequestException;
 import com.marcellkrausz.appointmentreserve.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserve.converters.AddressDtoToAddress;
 import com.marcellkrausz.appointmentreserve.converters.AddressToAddressDto;
@@ -9,7 +8,6 @@ import com.marcellkrausz.appointmentreserve.models.Address;
 import com.marcellkrausz.appointmentreserve.repositories.AddressRepository;
 import com.marcellkrausz.appointmentreserve.services.AddressService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -37,7 +35,6 @@ public class AddressServiceImpl implements AddressService {
         if (addresses.isEmpty()) {
             throw new AddressNotFoundException("Addresses not found in database.");
         }
-
         return addressToAddressDto.convertSet(addresses);
     }
 
@@ -47,7 +44,6 @@ public class AddressServiceImpl implements AddressService {
         if (addressOptional.isEmpty()) {
             throw new AddressNotFoundException("Address not found.");
         }
-
         return addressToAddressDto.convert(addressOptional.get());
     }
 
@@ -61,10 +57,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public void deleteAddressById(Long id) {
-        Optional<Address> addressOptional = addressRepository.findById(id);
-        if (addressOptional.isEmpty()) {
-            throw new AddressNotFoundException("Address not found.");
-        }
+        getAddressById(id);
 
         addressRepository.deleteById(id);
         log.debug("Deleted address id: " + id);

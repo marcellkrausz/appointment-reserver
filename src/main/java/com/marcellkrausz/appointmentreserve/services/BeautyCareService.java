@@ -1,7 +1,5 @@
 package com.marcellkrausz.appointmentreserve.services;
 
-
-
 import com.marcellkrausz.appointmentreserve.models.BeautyCare;
 import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 

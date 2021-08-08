@@ -33,6 +33,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Set<Customer> getAllCustomer() {
         Set<Customer> customers = new HashSet<>();
         customerRepository.findAll().iterator().forEachRemaining(customers::add);
+        if (customers.isEmpty()) {
+            throw new CustomerNotFoundException("Customers not found in database.");
+        }
         return customers;
     }
 
@@ -57,8 +60,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomerById(Long id) {
+        getCustomerById(id);
+
         customerRepository.deleteById(id);
         log.debug("Deleted customer id: " + id);
     }
-
 }

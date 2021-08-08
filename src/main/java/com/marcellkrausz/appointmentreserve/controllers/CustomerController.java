@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import java.util.Set;
 
 @RestController
+@RequestMapping("/customer")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -18,31 +19,31 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customer")
+    @GetMapping()
     public Set<Customer> getAll() {
         return customerService.getAllCustomer();
     }
 
-    @GetMapping("/customer/{id}")
+    @GetMapping("/{id}")
     public Customer getById(@PathVariable("id") Long id) {
         return customerService.getCustomerById(id);
     }
 
-    @PostMapping("/customer")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public Long save(@Valid @RequestBody CustomerDto customerDto) {
         customerService.saveCustomer(customerDto);
         return customerDto.getId();
     }
 
-    @PutMapping("/customer/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@Valid @RequestBody CustomerDto customerDto, @PathVariable("id") Long id) {
         customerDto.setId(id);
         customerService.saveCustomer(customerDto);
     }
 
-    @DeleteMapping("/customer/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id) {
         customerService.deleteCustomerById(id);

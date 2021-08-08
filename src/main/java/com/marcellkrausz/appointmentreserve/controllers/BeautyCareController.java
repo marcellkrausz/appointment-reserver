@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/beautyCare")
+@RequestMapping("/beautycare")
 public class BeautyCareController {
 
     private final BeautyCareService beautyCareService;

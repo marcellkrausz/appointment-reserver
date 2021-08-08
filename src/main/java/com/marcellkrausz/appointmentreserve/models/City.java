@@ -1,7 +1,6 @@
 package com.marcellkrausz.appointmentreserve.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,7 +28,9 @@ public class City {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "city")
     private Set<Address> addresses = new HashSet<>();
 
-    public City(Long id, @NotBlank(message = "City name is required.") String name, @NotBlank(message = "Postal code is required.") int postalCode) {
+    public City(Long id,
+                @NotBlank(message = "City name is required.") String name,
+                @NotBlank(message = "Postal code is required.") int postalCode) {
         this.id = id;
         this.name = name;
         this.postalCode = postalCode;

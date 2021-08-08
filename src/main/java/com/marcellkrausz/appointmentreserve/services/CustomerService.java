@@ -3,8 +3,6 @@ package com.marcellkrausz.appointmentreserve.services;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserve.models.Customer;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 public interface CustomerService {

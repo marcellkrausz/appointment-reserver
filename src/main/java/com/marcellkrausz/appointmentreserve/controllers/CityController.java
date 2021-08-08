@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
+@RequestMapping("/city")
 public class CityController {
 
     private final CityService cityService;
@@ -17,31 +18,31 @@ public class CityController {
         this.cityService = cityService;
     }
 
-    @GetMapping("/city")
+    @GetMapping()
     public Set<City> getAll() {
         return cityService.getAllCities();
     }
 
-    @GetMapping("/city/{id}")
+    @GetMapping("/{id}")
     public City getById(@PathVariable("id") Long id) {
         return cityService.getCityById(id);
     }
 
-    @PostMapping("/city")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public Long save(@RequestBody CityDto cityDto) {
         cityService.saveCity(cityDto);
         return cityDto.getId();
     }
 
-    @PutMapping("/city/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody CityDto cityDto, @PathVariable("id") Long id) {
         cityDto.setId(id);
         cityService.saveCity(cityDto);
     }
 
-    @DeleteMapping("/city/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable("id") Long id) {
         cityService.deleteCityById(id);

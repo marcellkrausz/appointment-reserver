@@ -59,20 +59,18 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void deleteAppointmentById(Long id) {
-        Optional<Appointment> appointmentOptional = appointmentRepository.findById(id);
-        if (appointmentOptional.isEmpty()) {
-            throw new AppointmentNotFoundException("Appointment not found.");
-        }
-        appointmentRepository.deleteById(id);
-        log.debug("Deleted appointment id: " + id);
-    }
-
-    @Override
     public Set<Appointment> getAllAppointmentsByCustomerName(String firstName, String lastName) {
         Set<Appointment> appointments = new HashSet<>();
         appointmentRepository.getAllAppointmentsByCustomerName(firstName, lastName).iterator().forEachRemaining(appointments::add);
 
         return appointments;
+    }
+
+    @Override
+    public void deleteAppointmentById(Long id) {
+        getAppointmentById(id);
+
+        appointmentRepository.deleteById(id);
+        log.debug("Deleted appointment id: " + id);
     }
 }

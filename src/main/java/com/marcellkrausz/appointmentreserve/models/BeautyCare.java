@@ -28,7 +28,10 @@ public class BeautyCare {
     @ManyToMany(mappedBy = "beautyCares")
     private Set<Appointment> serviceAppointments = new HashSet<>();
 
-    public BeautyCare(Long id, @NotBlank(message = "Cosmetic Service name is required.") @Size(min = 5, max = 150, message = "Cosmetic service name length should be between 5 and 150.") String name, Integer price, Integer minutes) {
+    public BeautyCare(Long id,
+                      @NotBlank(message = "Cosmetic Service name is required.")
+                      @Size(min = 5, max = 150, message = "Cosmetic service name length should be between 5 and 150.") String name,
+                      Integer price, Integer minutes) {
         this.id = id;
         this.name = name;
         this.price = price;

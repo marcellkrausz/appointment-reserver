@@ -31,7 +31,7 @@ public class BeautyCareControllerWebMvcIt {
     MockMvc mockMvc;
 
     @Test
-    void testListCosmeticServices() throws Exception {
+    void testListBeautyCares() throws Exception {
         BeautyCare beautyCare = new BeautyCare();
         beautyCare.setId(1L);
         beautyCare.setName("Valami");
@@ -40,7 +40,7 @@ public class BeautyCareControllerWebMvcIt {
 
         when(beautyCareService.getAllBeautyCare()).thenReturn(Set.of(beautyCare));
 
-        this.mockMvc.perform(get("/cosmeticservice")).andExpect(status().isOk())
+        this.mockMvc.perform(get("/beautycare")).andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].id", is(beautyCare.getId().intValue())))
                 .andExpect(jsonPath("$[0].name", is(beautyCare.getName())))
@@ -49,7 +49,7 @@ public class BeautyCareControllerWebMvcIt {
     }
 
     @Test
-    void testGetCosmeticServiceById() throws Exception {
+    void testGetBeautyCareById() throws Exception {
 
         BeautyCare beautyCare = new BeautyCare();
         beautyCare.setId(1L);
@@ -59,7 +59,7 @@ public class BeautyCareControllerWebMvcIt {
 
         when(beautyCareService.getBeautyCareById(1L)).thenReturn(beautyCare);
 
-        this.mockMvc.perform(get("/cosmeticservice/1")).andExpect(status().isOk())
+        this.mockMvc.perform(get("/beautycare/1")).andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(beautyCare.getId().intValue())))
                 .andExpect(jsonPath("$.name", is(beautyCare.getName())))
                 .andExpect(jsonPath("$.minutes", is(beautyCare.getMinutes())))
@@ -67,17 +67,17 @@ public class BeautyCareControllerWebMvcIt {
     }
 
     @Test
-    void testSaveCosmeticService() throws Exception {
-        JSONObject cosmeticJson = new JSONObject();
-        cosmeticJson.put("id", 1);
-        cosmeticJson.put("name", "Próba1");
-        cosmeticJson.put("minutes", 30);
-        cosmeticJson.put("price", 3000);
+    void testSaveBeautyCare() throws Exception {
+        JSONObject beautyJson = new JSONObject();
+        beautyJson.put("id", 1);
+        beautyJson.put("name", "Próba1");
+        beautyJson.put("minutes", 30);
+        beautyJson.put("price", 3000);
 
-        String json = cosmeticJson.toJSONString();
+        String json = beautyJson.toJSONString();
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                .post("/cosmeticservice")
+                .post("/beautycare")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json)
                 .accept(MediaType.APPLICATION_JSON))
@@ -85,17 +85,17 @@ public class BeautyCareControllerWebMvcIt {
     }
 
     @Test
-    void testUpdateCosmeticService() throws Exception {
-        JSONObject cosmeticJson = new JSONObject();
-        cosmeticJson.put("id", 1);
-        cosmeticJson.put("name", "Próba1");
-        cosmeticJson.put("minutes", 30);
-        cosmeticJson.put("price", 3000);
+    void testUpdateBeautyCare() throws Exception {
+        JSONObject beautyJson = new JSONObject();
+        beautyJson.put("id", 1);
+        beautyJson.put("name", "Próba1");
+        beautyJson.put("minutes", 30);
+        beautyJson.put("price", 3000);
 
-        String json = cosmeticJson.toJSONString();
+        String json = beautyJson.toJSONString();
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                .put("/cosmeticservice/{id}", 1)
+                .put("/bueatycare/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json)
                 .accept(MediaType.APPLICATION_JSON))
@@ -103,9 +103,9 @@ public class BeautyCareControllerWebMvcIt {
     }
 
     @Test
-    void testDeleteCosmeticServiceById() throws Exception {
+    void testDeleteBeautyCareById() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
-                .delete("/cosmeticservice/{id}", "1"))
+                .delete("/beautycare/{id}", "1"))
                 .andExpect(status().isNoContent());
     }
 }

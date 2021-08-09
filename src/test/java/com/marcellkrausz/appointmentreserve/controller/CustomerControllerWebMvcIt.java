@@ -73,10 +73,7 @@ public class CustomerControllerWebMvcIt {
 
     @Test
     void testGetCustomerByInvalidId() throws Exception {
-        when(customerService.getCustomerById(1L)).thenThrow(CustomerNotFoundException.class);
-
-        mockMvc.perform(get("/customer/1")).andExpect(status().isBadRequest());
-
+        mockMvc.perform(get("/customer/a")).andExpect(status().isBadRequest());
     }
 
     @Test
@@ -87,6 +84,7 @@ public class CustomerControllerWebMvcIt {
         customerJson.put("lastName", "Krausz");
         customerJson.put("phoneNumber", "067894444");
         customerJson.put("email", "marcell@gmail.com");
+        customerJson.put("addressId", 1L);
 
         String json = customerJson.toJSONString();
 
@@ -106,6 +104,7 @@ public class CustomerControllerWebMvcIt {
         customerJson.put("lastName", "Krausz");
         customerJson.put("phoneNumber", "067894444");
         customerJson.put("email", "marcell@gmail.com");
+        customerJson.put("addressId", 1L);
 
         String json = customerJson.toJSONString();
 

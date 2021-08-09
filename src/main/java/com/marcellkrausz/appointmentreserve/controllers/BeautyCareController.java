@@ -1,5 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controllers;
 
+import com.marcellkrausz.appointmentreserve.converters.StringToLong;
+import com.marcellkrausz.appointmentreserve.exception.BeautyCareNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.BeautyCare;
 import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 import com.marcellkrausz.appointmentreserve.services.BeautyCareService;
@@ -25,8 +27,11 @@ public class BeautyCareController {
     }
 
     @GetMapping("/{id}")
-    public BeautyCare getById(@PathVariable("id") Long id) {
-        return beautyCareService.getBeautyCareById(id);
+    public BeautyCare getById(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new BeautyCareNotFoundException("Must enter a valid number.");
+        }
+        return beautyCareService.getBeautyCareById(StringToLong.convert(id));
     }
 
     @PostMapping()
@@ -38,14 +43,20 @@ public class BeautyCareController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@Valid @RequestBody BeautyCareDto beautyCareDto, @PathVariable("id") Long id) {
-        beautyCareDto.setId(id);
+    public void update(@Valid @RequestBody BeautyCareDto beautyCareDto, @PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new BeautyCareNotFoundException("Must enter a valid number.");
+        }
+        beautyCareDto.setId(StringToLong.convert(id));
         beautyCareService.saveBeautyCare(beautyCareDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") Long id) {
-        beautyCareService.deleteBeautyCareById(id);
+    public void delete(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new BeautyCareNotFoundException("Must enter a valid number.");
+        }
+        beautyCareService.deleteBeautyCareById(StringToLong.convert(id));
     }
 }

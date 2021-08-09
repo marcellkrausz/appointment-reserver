@@ -1,5 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controllers;
 
+import com.marcellkrausz.appointmentreserve.converters.StringToLong;
+import com.marcellkrausz.appointmentreserve.exception.AddressNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserve.services.AddressService;
 import org.springframework.http.HttpStatus;
@@ -24,8 +26,11 @@ public class AddressController {
     }
 
     @GetMapping("/{id}")
-    public AddressDto getById(@PathVariable("id") Long id) {
-        return addressService.getAddressById(id);
+    public AddressDto getById(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new AddressNotFoundException("Must enter a valid number.");
+        }
+        return addressService.getAddressById(StringToLong.convert(id));
     }
 
     @PostMapping()
@@ -37,15 +42,20 @@ public class AddressController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@Valid @RequestBody AddressDto addressDto, @PathVariable("id") Long id) {
-        addressDto.setId(id);
+    public void update(@Valid @RequestBody AddressDto addressDto, @PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new AddressNotFoundException("Must enter a valid number.");
+        }
+        addressDto.setId(StringToLong.convert(id));
         addressService.saveAddress(addressDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Long delete(@PathVariable("id") Long id) {
-        addressService.deleteAddressById(id);
-        return id;
+    public void delete(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new AddressNotFoundException("Must enter a valid number.");
+        }
+        addressService.deleteAddressById(StringToLong.convert(id));
     }
 }

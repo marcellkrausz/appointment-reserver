@@ -1,5 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controllers;
 
+import com.marcellkrausz.appointmentreserve.converters.StringToLong;
+import com.marcellkrausz.appointmentreserve.exception.CustomerNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserve.models.Customer;
 import com.marcellkrausz.appointmentreserve.services.CustomerService;
@@ -25,8 +27,11 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Customer getById(@PathVariable("id") Long id) {
-        return customerService.getCustomerById(id);
+    public Customer getById(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new CustomerNotFoundException("Must enter a valid number.");
+        }
+        return customerService.getCustomerById(StringToLong.convert(id));
     }
 
     @PostMapping()
@@ -38,14 +43,20 @@ public class CustomerController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@Valid @RequestBody CustomerDto customerDto, @PathVariable("id") Long id) {
-        customerDto.setId(id);
+    public void update(@Valid @RequestBody CustomerDto customerDto, @PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new CustomerNotFoundException("Must enter a valid number.");
+        }
+        customerDto.setId(StringToLong.convert(id));
         customerService.saveCustomer(customerDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") Long id) {
-        customerService.deleteCustomerById(id);
+    public void delete(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new CustomerNotFoundException("Must enter a valid number.");
+        }
+        customerService.deleteCustomerById(StringToLong.convert(id));
     }
 }

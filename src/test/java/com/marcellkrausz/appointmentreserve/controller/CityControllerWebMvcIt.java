@@ -65,10 +65,7 @@ public class CityControllerWebMvcIt {
 
     @Test
     void testGetCityByInvalidId() throws Exception {
-        when(cityService.getCityById(1L)).thenThrow(CityNotFoundException.class);
-
-        mockMvc.perform(get("/city/1")).andExpect(status().isBadRequest());
-
+        mockMvc.perform(get("/city/a")).andExpect(status().isBadRequest());
     }
 
     @Test

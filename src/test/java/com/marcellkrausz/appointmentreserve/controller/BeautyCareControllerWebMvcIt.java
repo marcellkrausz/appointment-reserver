@@ -68,10 +68,7 @@ public class BeautyCareControllerWebMvcIt {
 
     @Test
     void testGetBeautyCareByInvalidId() throws Exception {
-        when(beautyCareService.getBeautyCareById(1L)).thenThrow(BeautyCareNotFoundException.class);
-
-        mockMvc.perform(get("/beautycare/1")).andExpect(status().isBadRequest());
-
+        mockMvc.perform(get("/beautycare/a")).andExpect(status().isBadRequest());
     }
 
     @Test

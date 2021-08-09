@@ -105,7 +105,7 @@ public class AppointmentControllerWebMvcIT {
     void testGetAddressWithInvalidId() throws Exception {
         when(appointmentService.getAppointmentById(1L)).thenThrow(AppointmentNotFoundException.class);
 
-        mockMvc.perform(get("/appointment/1")).andExpect(status().isBadRequest());
+        mockMvc.perform(get("/appointment/a")).andExpect(status().isBadRequest());
     }
 
     @Test

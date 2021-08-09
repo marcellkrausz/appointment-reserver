@@ -1,5 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controllers;
 
+import com.marcellkrausz.appointmentreserve.converters.StringToLong;
+import com.marcellkrausz.appointmentreserve.exception.CityNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserve.models.City;
 import com.marcellkrausz.appointmentreserve.services.CityService;
@@ -24,8 +26,11 @@ public class CityController {
     }
 
     @GetMapping("/{id}")
-    public City getById(@PathVariable("id") Long id) {
-        return cityService.getCityById(id);
+    public City getById(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new CityNotFoundException("Must enter a valid number.");
+        }
+        return cityService.getCityById(StringToLong.convert(id));
     }
 
     @PostMapping()
@@ -37,14 +42,20 @@ public class CityController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody CityDto cityDto, @PathVariable("id") Long id) {
-        cityDto.setId(id);
+    public void update(@RequestBody CityDto cityDto, @PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new CityNotFoundException("Must enter a valid number.");
+        }
+        cityDto.setId(StringToLong.convert(id));
         cityService.saveCity(cityDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable("id") Long id) {
-        cityService.deleteCityById(id);
+    public void deleteById(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new CityNotFoundException("Must enter a valid number.");
+        }
+        cityService.deleteCityById(StringToLong.convert(id));
     }
 }

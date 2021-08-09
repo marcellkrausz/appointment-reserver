@@ -8,20 +8,16 @@ import com.marcellkrausz.appointmentreserve.repositories.AddressRepository;
 import com.marcellkrausz.appointmentreserve.services.AddressService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.webjars.NotFoundException;
 
 import java.util.Set;
 
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -65,9 +61,7 @@ public class AddressControllerWebMvcIT {
 
     @Test
     void testGetAddressWithInvalidId() throws Exception {
-        when(addressService.getAddressById(1L)).thenThrow(AddressNotFoundException.class);
-
-        mockMvc.perform(get("/address/1")).andExpect(status().isBadRequest());
+        mockMvc.perform(get("/address/a")).andExpect(status().isBadRequest());
     }
 
     @Test

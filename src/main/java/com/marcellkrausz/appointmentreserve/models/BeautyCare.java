@@ -1,6 +1,7 @@
 package com.marcellkrausz.appointmentreserve.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import java.util.Set;
 @Entity
 @JsonIgnoreProperties("serviceAppointments")
 @NoArgsConstructor
+@EqualsAndHashCode
 public class BeautyCare {
 
     @Id

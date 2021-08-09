@@ -1,5 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controllers;
 
+import com.marcellkrausz.appointmentreserve.converters.StringToLong;
+import com.marcellkrausz.appointmentreserve.exception.AppointmentNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserve.models.Appointment;
 import com.marcellkrausz.appointmentreserve.services.AppointmentService;
@@ -25,8 +27,11 @@ public class AppointmentController {
     }
 
     @GetMapping("/{id}")
-    public AppointmentDto getById(@PathVariable("id") Long id) {
-        return appointmentService.getAppointmentById(id);
+    public AppointmentDto getById(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new AppointmentNotFoundException("Must enter a valid number.");
+        }
+        return appointmentService.getAppointmentById(StringToLong.convert(id));
     }
 
     @GetMapping("/customer")
@@ -43,14 +48,20 @@ public class AppointmentController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@Valid @RequestBody AppointmentDto appointmentDto, @PathVariable("id") Long id) {
-        appointmentDto.setId(id);
+    public void update(@Valid @RequestBody AppointmentDto appointmentDto, @PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new AppointmentNotFoundException("Must enter a valid number.");
+        }
+        appointmentDto.setId(StringToLong.convert(id));
         appointmentService.saveAppointment(appointmentDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") Long id) {
-        appointmentService.deleteAppointmentById(id);
+    public void delete(@PathVariable("id") String id) {
+        if (StringToLong.convert(id) == null) {
+            throw new AppointmentNotFoundException("Must enter a valid number.");
+        }
+        appointmentService.deleteAppointmentById(StringToLong.convert(id));
     }
 }

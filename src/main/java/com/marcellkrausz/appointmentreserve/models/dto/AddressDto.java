@@ -16,11 +16,13 @@ import javax.validation.constraints.Size;
 public class AddressDto {
 
     private Long id;
-    @NotBlank(message = "Street name is required.")
+    @NotNull
+    @NotBlank(message = "{address.name}")
     @Size(min = 3 , max = 150, message = "Street length should be between 1 and 150.")
     private String street;
 
     @NotNull
     private Integer houseNumber;
+    @NotNull
     private Long cityId;
 }

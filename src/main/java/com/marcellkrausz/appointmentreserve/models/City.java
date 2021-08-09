@@ -20,9 +20,7 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "City name is required.")
     private String name;
-
     private Integer postalCode;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "city")

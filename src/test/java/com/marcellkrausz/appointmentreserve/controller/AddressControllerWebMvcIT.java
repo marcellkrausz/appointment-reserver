@@ -1,20 +1,27 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.AddressController;
+import com.marcellkrausz.appointmentreserve.exception.AddressNotFoundException;
+import com.marcellkrausz.appointmentreserve.models.Address;
 import com.marcellkrausz.appointmentreserve.models.dto.AddressDto;
+import com.marcellkrausz.appointmentreserve.repositories.AddressRepository;
 import com.marcellkrausz.appointmentreserve.services.AddressService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.webjars.NotFoundException;
 
 import java.util.Set;
 
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -24,6 +31,9 @@ public class AddressControllerWebMvcIT {
 
     @MockBean
     AddressService addressService;
+
+    @MockBean
+    AddressRepository addressRepository;
 
     @Autowired
     MockMvc mockMvc;
@@ -51,6 +61,13 @@ public class AddressControllerWebMvcIT {
                 .andExpect(jsonPath("$.street", is(address.getStreet())))
                 .andExpect(jsonPath("$.houseNumber", is(address.getHouseNumber())))
                 .andExpect(jsonPath("$.cityId", is(address.getCityId().intValue())));
+    }
+
+    @Test
+    void testGetAddressWithInvalidId() throws Exception {
+        when(addressService.getAddressById(1L)).thenThrow(AddressNotFoundException.class);
+
+        mockMvc.perform(get("/address/1")).andExpect(status().isBadRequest());
     }
 
     @Test

@@ -1,6 +1,8 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.CustomerController;
+import com.marcellkrausz.appointmentreserve.exception.BeautyCareNotFoundException;
+import com.marcellkrausz.appointmentreserve.exception.CustomerNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.Customer;
 import com.marcellkrausz.appointmentreserve.services.CustomerService;
 import net.minidev.json.JSONObject;
@@ -67,6 +69,14 @@ public class CustomerControllerWebMvcIt {
                 .andExpect(jsonPath("$.lastName", is(customer.getLastName())))
                 .andExpect(jsonPath("$.phoneNumber", is(customer.getPhoneNumber())))
                 .andExpect(jsonPath("$.email", is(customer.getEmail())));
+    }
+
+    @Test
+    void testGetCustomerByInvalidId() throws Exception {
+        when(customerService.getCustomerById(1L)).thenThrow(CustomerNotFoundException.class);
+
+        mockMvc.perform(get("/customer/1")).andExpect(status().isBadRequest());
+
     }
 
     @Test

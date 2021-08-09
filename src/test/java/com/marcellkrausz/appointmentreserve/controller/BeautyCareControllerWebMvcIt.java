@@ -1,6 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.BeautyCareController;
+import com.marcellkrausz.appointmentreserve.exception.BeautyCareNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.*;
 import com.marcellkrausz.appointmentreserve.services.BeautyCareService;
 import net.minidev.json.JSONObject;
@@ -50,7 +51,6 @@ public class BeautyCareControllerWebMvcIt {
 
     @Test
     void testGetBeautyCareById() throws Exception {
-
         BeautyCare beautyCare = new BeautyCare();
         beautyCare.setId(1L);
         beautyCare.setMinutes(21);
@@ -64,6 +64,14 @@ public class BeautyCareControllerWebMvcIt {
                 .andExpect(jsonPath("$.name", is(beautyCare.getName())))
                 .andExpect(jsonPath("$.minutes", is(beautyCare.getMinutes())))
                 .andExpect(jsonPath("$.price", is(beautyCare.getPrice())));
+    }
+
+    @Test
+    void testGetBeautyCareByInvalidId() throws Exception {
+        when(beautyCareService.getBeautyCareById(1L)).thenThrow(BeautyCareNotFoundException.class);
+
+        mockMvc.perform(get("/beautycare/1")).andExpect(status().isBadRequest());
+
     }
 
     @Test
@@ -85,6 +93,60 @@ public class BeautyCareControllerWebMvcIt {
     }
 
     @Test
+    void testSaveBeautyCareWithInvalidName() throws Exception {
+        JSONObject beautyJson = new JSONObject();
+        beautyJson.put("id", 1);
+        beautyJson.put("name", "Bad");
+        beautyJson.put("minutes", 30);
+        beautyJson.put("price", 3000);
+
+        String json = beautyJson.toJSONString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .post("/beautycare")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testSaveBeautyCareWithInvalidTime() throws Exception {
+        JSONObject beautyJson = new JSONObject();
+        beautyJson.put("id", 1);
+        beautyJson.put("name", "Próba1");
+        beautyJson.put("minutes", 7);
+        beautyJson.put("price", 3000);
+
+        String json = beautyJson.toJSONString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .post("/beautycare")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testSaveBeautyCareWithInvalidPrice() throws Exception {
+        JSONObject beautyJson = new JSONObject();
+        beautyJson.put("id", 1);
+        beautyJson.put("name", "Próba1");
+        beautyJson.put("minutes", 30);
+        beautyJson.put("price", 500);
+
+        String json = beautyJson.toJSONString();
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .post("/beautycare")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     void testUpdateBeautyCare() throws Exception {
         JSONObject beautyJson = new JSONObject();
         beautyJson.put("id", 1);
@@ -95,7 +157,7 @@ public class BeautyCareControllerWebMvcIt {
         String json = beautyJson.toJSONString();
 
         this.mockMvc.perform(MockMvcRequestBuilders
-                .put("/bueatycare/{id}", 1)
+                .put("/beautycare/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json)
                 .accept(MediaType.APPLICATION_JSON))

@@ -1,6 +1,8 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.CityController;
+import com.marcellkrausz.appointmentreserve.exception.BeautyCareNotFoundException;
+import com.marcellkrausz.appointmentreserve.exception.CityNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.City;
 import com.marcellkrausz.appointmentreserve.services.CityService;
 import net.minidev.json.JSONObject;
@@ -59,6 +61,14 @@ public class CityControllerWebMvcIt {
                 .andExpect(jsonPath("$.id", is(city.getId().intValue())))
                 .andExpect(jsonPath("$.name", is(city.getName())))
                 .andExpect(jsonPath("$.postalCode", is(city.getPostalCode())));
+    }
+
+    @Test
+    void testGetCityByInvalidId() throws Exception {
+        when(cityService.getCityById(1L)).thenThrow(CityNotFoundException.class);
+
+        mockMvc.perform(get("/city/1")).andExpect(status().isBadRequest());
+
     }
 
     @Test

@@ -16,8 +16,8 @@ import javax.validation.constraints.Size;
 public class BeautyCareDto {
 
     private Long id;
-    @NotBlank(message = "Cosmetic Service name is required.")
-    @Size(min = 5 , max = 150, message = "Cosmetic service name length should be between 5 and 150.")
+    @NotBlank(message = "{beautyCare.name}")
+    @Size(min = 5 , max = 150, message = "Beauty Care name length should be between 5 and 150.")
     private String name;
 
     @Min(value = 1000, message = "Price is minimum 1000HUF")

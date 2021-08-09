@@ -1,6 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.AppointmentController;
+import com.marcellkrausz.appointmentreserve.exception.AppointmentNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
@@ -98,6 +99,13 @@ public class AppointmentControllerWebMvcIT {
                 .andExpect(jsonPath("$.appointmentDateEnd", is("2021-07-18T14:00:00")))
                 .andExpect(jsonPath("$.customerDto.id", is(customerDto.getId().intValue())))
                 .andExpect(jsonPath("$.services[0].id", is(cosmeticService.getId().intValue())));
+    }
+
+    @Test
+    void testGetAddressWithInvalidId() throws Exception {
+        when(appointmentService.getAppointmentById(1L)).thenThrow(AppointmentNotFoundException.class);
+
+        mockMvc.perform(get("/appointment/1")).andExpect(status().isBadRequest());
     }
 
     @Test

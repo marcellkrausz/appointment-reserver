@@ -55,7 +55,7 @@ class AppointmentReserveApplicationTests {
     @Test
     public void testCosmeticServiceById() {
         BeautyCare excepted = new BeautyCare(1L, "Nyomásterápia", 3000, 30);
-        ResponseEntity<BeautyCare> responseEntity = restTemplate.getForEntity(BASE_URL + "/cosmeticservice/1", BeautyCare.class);
+        ResponseEntity<BeautyCare> responseEntity = restTemplate.getForEntity(BASE_URL + "/beautycare/1", BeautyCare.class);
         BeautyCare actual = responseEntity.getBody();
 
         Assertions.assertEquals(excepted.getName(), actual.getName());

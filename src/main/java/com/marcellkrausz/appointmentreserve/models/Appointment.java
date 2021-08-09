@@ -21,11 +21,8 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @FutureOrPresent
     private LocalDateTime appointmentDateStart;
-    @FutureOrPresent
     private LocalDateTime appointmentDateEnd;
-
 
     @ManyToOne
     private Customer customer;

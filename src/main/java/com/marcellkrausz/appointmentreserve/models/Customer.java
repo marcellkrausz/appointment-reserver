@@ -21,16 +21,9 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Size(max = 40, message = "First name length should be less then 40 character")
     private String firstName;
-
-    @Size(max = 40, message = "Last name length should be less then 40 character")
     private String lastName;
-
     private String phoneNumber;
-
-    @Size(max = 40, message = "Email length should be less then 15 character")
     private String email;
 
     @OneToOne

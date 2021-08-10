@@ -2,7 +2,6 @@ package com.marcellkrausz.appointmentreserve.controllers;
 
 import com.marcellkrausz.appointmentreserve.converters.StringToLong;
 import com.marcellkrausz.appointmentreserve.exceptions.BeautyCareNotFoundException;
-import com.marcellkrausz.appointmentreserve.models.BeautyCare;
 import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 import com.marcellkrausz.appointmentreserve.services.BeautyCareService;
 import org.springframework.http.HttpStatus;

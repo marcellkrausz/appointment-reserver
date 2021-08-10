@@ -3,7 +3,6 @@ package com.marcellkrausz.appointmentreserve.controllers;
 import com.marcellkrausz.appointmentreserve.converters.StringToLong;
 import com.marcellkrausz.appointmentreserve.exceptions.CityNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
-import com.marcellkrausz.appointmentreserve.models.City;
 import com.marcellkrausz.appointmentreserve.services.CityService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

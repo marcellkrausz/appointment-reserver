@@ -1,7 +1,5 @@
 package com.marcellkrausz.appointmentreserve.converters;
 
-import com.marcellkrausz.appointmentreserve.models.City;
-import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserve.models.Customer;
 import lombok.Synchronized;

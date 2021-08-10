@@ -1,7 +1,6 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.BeautyCareController;
-import com.marcellkrausz.appointmentreserve.exception.BeautyCareNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.*;
 import com.marcellkrausz.appointmentreserve.services.BeautyCareService;
 import net.minidev.json.JSONObject;
@@ -23,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BeautyCareController.class)
-public class BeautyCareControllerWebMvcIt {
+public class BeautyCareControllerWebMvcUT {
 
     @MockBean
     BeautyCareService beautyCareService;

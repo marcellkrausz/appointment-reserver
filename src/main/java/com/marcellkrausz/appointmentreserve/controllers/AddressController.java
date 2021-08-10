@@ -1,7 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controllers;
 
 import com.marcellkrausz.appointmentreserve.converters.StringToLong;
-import com.marcellkrausz.appointmentreserve.exception.AddressNotFoundException;
+import com.marcellkrausz.appointmentreserve.exceptions.AddressNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserve.services.AddressService;
 import org.springframework.http.HttpStatus;

@@ -1,8 +1,6 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.CustomerController;
-import com.marcellkrausz.appointmentreserve.exception.BeautyCareNotFoundException;
-import com.marcellkrausz.appointmentreserve.exception.CustomerNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.Customer;
 import com.marcellkrausz.appointmentreserve.services.CustomerService;
 import net.minidev.json.JSONObject;
@@ -24,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CustomerController.class)
-public class CustomerControllerWebMvcIt {
+public class CustomerControllerWebMvcUT {
 
     @MockBean
     CustomerService customerService;

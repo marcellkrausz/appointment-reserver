@@ -12,7 +12,6 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 public class Appointment {
 
     @Id
@@ -37,15 +36,15 @@ public class Appointment {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Appointment)) return false;
 
         Appointment that = (Appointment) o;
 
-        return id.equals(that.id);
+        return id != null ? id.equals(that.id) : that.id == null;
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return id != null ? id.hashCode() : 0;
     }
 }

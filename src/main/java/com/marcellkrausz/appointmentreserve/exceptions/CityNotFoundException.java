@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserve.exception;
+package com.marcellkrausz.appointmentreserve.exceptions;
 
 public class CityNotFoundException extends RuntimeException {
     public CityNotFoundException(String message) {

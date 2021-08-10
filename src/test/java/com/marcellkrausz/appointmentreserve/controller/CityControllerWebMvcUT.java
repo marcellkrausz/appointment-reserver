@@ -1,9 +1,8 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.CityController;
-import com.marcellkrausz.appointmentreserve.exception.BeautyCareNotFoundException;
-import com.marcellkrausz.appointmentreserve.exception.CityNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.City;
+import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserve.services.CityService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -24,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CityController.class)
-public class CityControllerWebMvcIt {
+public class CityControllerWebMvcUT {
 
     @MockBean
     CityService cityService;
@@ -34,7 +33,7 @@ public class CityControllerWebMvcIt {
 
     @Test
     void testListCities() throws Exception {
-        City city = new City();
+        CityDto city = new CityDto();
         city.setId(1L);
         city.setName("Sülysáp");
         city.setPostalCode(4000);
@@ -50,7 +49,7 @@ public class CityControllerWebMvcIt {
 
     @Test
     void testCityById() throws Exception {
-        City city = new City();
+        CityDto city = new CityDto();
         city.setId(1L);
         city.setName("Sülysáp");
         city.setPostalCode(4000);

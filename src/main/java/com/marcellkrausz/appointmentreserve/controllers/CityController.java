@@ -1,7 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controllers;
 
 import com.marcellkrausz.appointmentreserve.converters.StringToLong;
-import com.marcellkrausz.appointmentreserve.exception.CityNotFoundException;
+import com.marcellkrausz.appointmentreserve.exceptions.CityNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserve.models.City;
 import com.marcellkrausz.appointmentreserve.services.CityService;
@@ -21,12 +21,12 @@ public class CityController {
     }
 
     @GetMapping()
-    public Set<City> getAll() {
+    public Set<CityDto> getAll() {
         return cityService.getAllCities();
     }
 
     @GetMapping("/{id}")
-    public City getById(@PathVariable("id") String id) {
+    public CityDto getById(@PathVariable("id") String id) {
         if (StringToLong.convert(id) == null) {
             throw new CityNotFoundException("Must enter a valid number.");
         }

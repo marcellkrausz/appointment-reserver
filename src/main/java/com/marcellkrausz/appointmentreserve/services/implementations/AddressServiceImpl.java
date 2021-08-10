@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
-import com.marcellkrausz.appointmentreserve.exception.AddressNotFoundException;
+import com.marcellkrausz.appointmentreserve.exceptions.AddressNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserve.converters.AddressDtoToAddress;
 import com.marcellkrausz.appointmentreserve.converters.AddressToAddressDto;

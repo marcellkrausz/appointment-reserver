@@ -19,10 +19,10 @@ public class BeautyCareDtoToBeautyCare implements Converter<BeautyCareDto, Beaut
         }
 
         final BeautyCare beautyCare = new BeautyCare();
-        beautyCare.setId(beautyCare.getId());
-        beautyCare.setName(beautyCare.getName());
-        beautyCare.setPrice(beautyCare.getPrice());
-        beautyCare.setMinutes(beautyCare.getMinutes());
+        beautyCare.setId(beautyCareDto.getId());
+        beautyCare.setName(beautyCareDto.getName());
+        beautyCare.setPrice(beautyCareDto.getPrice());
+        beautyCare.setMinutes(beautyCareDto.getMinutes());
 
         return beautyCare;
     }

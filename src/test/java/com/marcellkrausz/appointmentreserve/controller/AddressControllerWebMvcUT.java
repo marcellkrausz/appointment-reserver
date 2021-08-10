@@ -1,8 +1,6 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.AddressController;
-import com.marcellkrausz.appointmentreserve.exception.AddressNotFoundException;
-import com.marcellkrausz.appointmentreserve.models.Address;
 import com.marcellkrausz.appointmentreserve.models.dto.AddressDto;
 import com.marcellkrausz.appointmentreserve.repositories.AddressRepository;
 import com.marcellkrausz.appointmentreserve.services.AddressService;
@@ -23,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(AddressController.class)
-public class AddressControllerWebMvcIT {
+public class AddressControllerWebMvcUT {
 
     @MockBean
     AddressService addressService;

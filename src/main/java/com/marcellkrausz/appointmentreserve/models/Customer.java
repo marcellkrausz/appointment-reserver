@@ -16,7 +16,6 @@ import java.util.Set;
 @Getter
 @Entity
 @JsonIgnoreProperties("customerAppointments")
-@EqualsAndHashCode
 @NoArgsConstructor
 public class Customer {
 
@@ -44,5 +43,20 @@ public class Customer {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer)) return false;
+
+        Customer customer = (Customer) o;
+
+        return id != null ? id.equals(customer.id) : customer.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

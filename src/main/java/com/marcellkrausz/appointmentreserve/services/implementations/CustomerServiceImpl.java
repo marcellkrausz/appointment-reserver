@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
-import com.marcellkrausz.appointmentreserve.exception.CustomerNotFoundException;
+import com.marcellkrausz.appointmentreserve.exceptions.CustomerNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserve.converters.CustomerDtoToCustomer;
 import com.marcellkrausz.appointmentreserve.converters.CustomerToCustomerDto;

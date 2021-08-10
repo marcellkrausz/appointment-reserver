@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
@@ -18,7 +17,6 @@ import java.util.Set;
 @Entity
 @JsonIgnoreProperties("serviceAppointments")
 @NoArgsConstructor
-@EqualsAndHashCode
 public class BeautyCare {
 
     @Id
@@ -44,15 +42,15 @@ public class BeautyCare {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof BeautyCare)) return false;
 
         BeautyCare that = (BeautyCare) o;
 
-        return id.equals(that.id);
+        return id != null ? id.equals(that.id) : that.id == null;
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return id != null ? id.hashCode() : 0;
     }
 }

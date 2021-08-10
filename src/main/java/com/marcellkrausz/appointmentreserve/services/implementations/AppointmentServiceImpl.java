@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
-import com.marcellkrausz.appointmentreserve.exception.AppointmentNotFoundException;
+import com.marcellkrausz.appointmentreserve.exceptions.AppointmentNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserve.converters.AppointmentDtoToAppointment;
 import com.marcellkrausz.appointmentreserve.converters.AppointmentToAppointmentDto;

@@ -28,9 +28,9 @@ public class AddressDtoToAddress implements Converter<AddressDto, Address> {
 
         if (addressDto.getCityId() != null) {
             City city = new City();
-            city.setId(addressDto.getId());
+            city.setId(addressDto.getCityId());
+            city.getAddresses().add(address);
             address.setCity(city);
-            city.addAddress(address);
         }
         return address;
     }

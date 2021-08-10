@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
-import com.marcellkrausz.appointmentreserve.exception.CityNotFoundException;
+import com.marcellkrausz.appointmentreserve.exceptions.CityNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserve.converters.CityDtoToCity;
 import com.marcellkrausz.appointmentreserve.converters.CityToCityDto;
@@ -30,22 +30,26 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public Set<City> getAllCities() {
+    public Set<CityDto> getAllCities() {
         Set<City> cities = new HashSet<>();
         cityRepository.findAll().iterator().forEachRemaining(cities::add);
         if (cities.isEmpty()) {
             throw new CityNotFoundException("Cities not found in database.");
         }
-        return cities;
+        Set<CityDto> citiesDto = new HashSet<>();
+        for(City city : cities) {
+            citiesDto.add(cityToCityDto.convert(city));
+        }
+        return citiesDto;
     }
 
     @Override
-    public City getCityById(Long id) {
+    public CityDto getCityById(Long id) {
         Optional<City> cityOptional = cityRepository.findById(id);
         if (cityOptional.isEmpty()) {
             throw new CityNotFoundException("City not found in database");
         }
-        return cityOptional.get();
+        return cityToCityDto.convert(cityOptional.get());
     }
 
     @Transactional

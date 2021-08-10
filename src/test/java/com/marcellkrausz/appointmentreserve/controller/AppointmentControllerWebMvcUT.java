@@ -1,7 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.AppointmentController;
-import com.marcellkrausz.appointmentreserve.exception.AppointmentNotFoundException;
+import com.marcellkrausz.appointmentreserve.exceptions.AppointmentNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
@@ -26,7 +26,7 @@ import java.util.Set;
 
 
 @WebMvcTest(AppointmentController.class)
-public class AppointmentControllerWebMvcIT {
+public class AppointmentControllerWebMvcUT {
 
     @MockBean
     AppointmentService appointmentService;

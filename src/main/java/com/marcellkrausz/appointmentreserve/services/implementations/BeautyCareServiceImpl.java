@@ -1,6 +1,6 @@
 package com.marcellkrausz.appointmentreserve.services.implementations;
 
-import com.marcellkrausz.appointmentreserve.exception.BeautyCareNotFoundException;
+import com.marcellkrausz.appointmentreserve.exceptions.BeautyCareNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.BeautyCare;
 import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 import com.marcellkrausz.appointmentreserve.converters.BeautyCareDtoToBeautyCare;

@@ -1,7 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controllers;
 
 import com.marcellkrausz.appointmentreserve.converters.StringToLong;
-import com.marcellkrausz.appointmentreserve.exception.AppointmentNotFoundException;
+import com.marcellkrausz.appointmentreserve.exceptions.AppointmentNotFoundException;
 import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
 import com.marcellkrausz.appointmentreserve.models.Appointment;
 import com.marcellkrausz.appointmentreserve.services.AppointmentService;

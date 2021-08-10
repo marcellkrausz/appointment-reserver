@@ -1,4 +1,4 @@
-package com.marcellkrausz.appointmentreserve.exception;
+package com.marcellkrausz.appointmentreserve.exceptions;
 
 import org.springframework.http.HttpStatus;
 

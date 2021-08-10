@@ -15,7 +15,6 @@ import java.util.Set;
 @Getter
 @Entity
 @JsonIgnoreProperties("addresses")
-@EqualsAndHashCode
 @NoArgsConstructor
 public class City {
 
@@ -36,7 +35,18 @@ public class City {
         this.postalCode = postalCode;
     }
 
-    public void addAddress(Address address) {
-        this.addresses.add(address);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof City)) return false;
+
+        City city = (City) o;
+
+        return id != null ? id.equals(city.id) : city.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

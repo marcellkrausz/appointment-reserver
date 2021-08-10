@@ -1,15 +1,14 @@
 package com.marcellkrausz.appointmentreserve.services;
 
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
-import com.marcellkrausz.appointmentreserve.models.Customer;
 
 import java.util.Set;
 
 public interface CustomerService {
 
-    Set<Customer> getAllCustomer();
+    Set<CustomerDto> getAllCustomer();
 
-    Customer getCustomerById(Long id);
+    CustomerDto getCustomerById(Long id);
 
     CustomerDto saveCustomer(CustomerDto customerDto);
 

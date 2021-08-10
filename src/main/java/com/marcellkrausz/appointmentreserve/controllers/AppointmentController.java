@@ -35,7 +35,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/customer")
-    public Set<Appointment> getAllByCustomerName(@RequestParam String firstname, @RequestParam String lastName) {
+    public Set<AppointmentDto> getAllByCustomerName(@RequestParam String firstname, @RequestParam String lastName) {
        return appointmentService.getAllAppointmentsByCustomerName(firstname, lastName);
     }
     

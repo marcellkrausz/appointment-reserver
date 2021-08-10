@@ -1,7 +1,7 @@
 package com.marcellkrausz.appointmentreserve.repositories;
 
 import com.marcellkrausz.appointmentreserve.models.BeautyCare;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface BeautyCarteRepository extends JpaRepository<BeautyCare, Long> {
+public interface BeautyCarteRepository extends CrudRepository<BeautyCare, Long> {
 }

@@ -1,11 +1,16 @@
 package com.marcellkrausz.appointmentreserve.converters;
 
+import com.marcellkrausz.appointmentreserve.models.BeautyCare;
+import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserve.models.City;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class CityToCityDto implements Converter<City, CityDto> {
@@ -24,5 +29,13 @@ public class CityToCityDto implements Converter<City, CityDto> {
         cityDto.setPostalCode(city.getPostalCode());
 
         return cityDto;
+    }
+
+    public Set<CityDto> convertSet(Set<City> cities) {
+        Set<CityDto>CityDtos = new HashSet<>();
+        for (City city : cities) {
+            CityDtos.add(convert(city));
+        }
+        return CityDtos;
     }
 }

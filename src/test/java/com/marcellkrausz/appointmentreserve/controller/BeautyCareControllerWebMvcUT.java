@@ -2,6 +2,7 @@ package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.BeautyCareController;
 import com.marcellkrausz.appointmentreserve.models.*;
+import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 import com.marcellkrausz.appointmentreserve.services.BeautyCareService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ public class BeautyCareControllerWebMvcUT {
 
     @Test
     void testListBeautyCares() throws Exception {
-        BeautyCare beautyCare = new BeautyCare();
+        BeautyCareDto beautyCare = new BeautyCareDto();
         beautyCare.setId(1L);
         beautyCare.setName("Valami");
         beautyCare.setMinutes(30);
@@ -50,7 +51,7 @@ public class BeautyCareControllerWebMvcUT {
 
     @Test
     void testGetBeautyCareById() throws Exception {
-        BeautyCare beautyCare = new BeautyCare();
+        BeautyCareDto beautyCare = new BeautyCareDto();
         beautyCare.setId(1L);
         beautyCare.setMinutes(21);
         beautyCare.setName("Próba");

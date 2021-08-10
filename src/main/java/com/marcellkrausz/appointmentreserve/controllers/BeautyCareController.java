@@ -22,12 +22,12 @@ public class BeautyCareController {
     }
 
     @GetMapping()
-    public Set<BeautyCare> getAll() {
+    public Set<BeautyCareDto> getAll() {
         return beautyCareService.getAllBeautyCare();
     }
 
     @GetMapping("/{id}")
-    public BeautyCare getById(@PathVariable("id") String id) {
+    public BeautyCareDto getById(@PathVariable("id") String id) {
         if (StringToLong.convert(id) == null) {
             throw new BeautyCareNotFoundException("Must enter a valid number.");
         }

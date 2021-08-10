@@ -59,11 +59,16 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Set<Appointment> getAllAppointmentsByCustomerName(String firstName, String lastName) {
+    public Set<AppointmentDto> getAllAppointmentsByCustomerName(String firstName, String lastName) {
         Set<Appointment> appointments = new HashSet<>();
         appointmentRepository.getAllAppointmentsByCustomerName(firstName, lastName).iterator().forEachRemaining(appointments::add);
+        if (appointments.isEmpty()) {
+            throw new AppointmentNotFoundException("Appointments not found");
+        }
+        Set<AppointmentDto> appointmentDtos = new HashSet<>();
+        appointments.forEach(appointment -> appointmentDtos.add(appointmentToAppointmentDto.convert(appointment)));
 
-        return appointments;
+        return appointmentDtos;
     }
 
     @Override

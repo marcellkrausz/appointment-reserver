@@ -15,5 +15,5 @@ public interface AppointmentService {
 
     void deleteAppointmentById(Long id);
 
-    Set<Appointment> getAllAppointmentsByCustomerName(String firstName, String lastName);
+    Set<AppointmentDto> getAllAppointmentsByCustomerName(String firstName, String lastName);
 }

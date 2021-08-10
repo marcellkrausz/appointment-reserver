@@ -36,11 +36,7 @@ public class CityServiceImpl implements CityService {
         if (cities.isEmpty()) {
             throw new CityNotFoundException("Cities not found in database.");
         }
-        Set<CityDto> citiesDto = new HashSet<>();
-        for(City city : cities) {
-            citiesDto.add(cityToCityDto.convert(city));
-        }
-        return citiesDto;
+        return cityToCityDto.convertSet(cities);
     }
 
     @Override

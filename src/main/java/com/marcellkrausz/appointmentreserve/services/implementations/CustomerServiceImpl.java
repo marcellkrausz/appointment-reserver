@@ -30,22 +30,22 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Set<Customer> getAllCustomer() {
+    public Set<CustomerDto> getAllCustomer() {
         Set<Customer> customers = new HashSet<>();
         customerRepository.findAll().iterator().forEachRemaining(customers::add);
         if (customers.isEmpty()) {
             throw new CustomerNotFoundException("Customers not found in database.");
         }
-        return customers;
+        return customerToCustomerDto.convertSet(customers);
     }
 
     @Override
-    public Customer getCustomerById(Long id) {
+    public CustomerDto getCustomerById(Long id) {
         Optional<Customer> customerOptional = customerRepository.findById(id);
         if (customerOptional.isEmpty()) {
             throw new CustomerNotFoundException("Customer not found");
         }
-        return customerOptional.get();
+        return customerToCustomerDto.convert(customerOptional.get());
     }
 
     @Transactional

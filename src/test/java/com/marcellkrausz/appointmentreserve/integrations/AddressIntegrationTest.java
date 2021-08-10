@@ -15,6 +15,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -37,22 +38,22 @@ public class AddressIntegrationTest {
 
     @Test
     public void testAllFromAddress() {
-        List<Address> expected = new ArrayList<>() {{
-            add(new Address(1L, "Vörösmarty utca", 1, new City(1L, "Budapest", 1038)));
-            add(new Address(2L, "Ady utca", 5, new City(3L, "Budapest", 1122)));
+        List<AddressDto> expected = new ArrayList<>() {{
+            add(new AddressDto(1L, "Vörösmarty utca", 1, 1L));
+            add(new AddressDto(2L, "Ady utca", 5, 2L));
         }};
-        ResponseEntity<Address[]> responseEntity = restTemplate.getForEntity(BASE_URL + "/address", Address[].class);
-        List<Address> actual = Arrays.asList(responseEntity.getBody());
+        ResponseEntity<AddressDto[]> responseEntity = restTemplate.getForEntity(BASE_URL, AddressDto[].class);
+        List<AddressDto> actual = Arrays.asList(responseEntity.getBody());
         assertEquals(expected.size(), actual.size());
     }
 
     @Test
     public void testGetAddressById() {
-        Address expected = new Address(1L, "Vörösmarty utca", 1, new City(1L, "Budapest", 1038));
-        ResponseEntity<Address> responseEntity = restTemplate.getForEntity(BASE_URL + "/1", Address.class);
-        Address actual = responseEntity.getBody();
+        AddressDto expected = new AddressDto(1L, "Vörösmarty utca", 1, 1L);
+        ResponseEntity<AddressDto> responseEntity = restTemplate.getForEntity(BASE_URL + "/1", AddressDto.class);
+        AddressDto actual = responseEntity.getBody();
 
-        assertEquals(expected, actual);
+        assertEquals(expected.getStreet(), actual.getStreet());
     }
 
     @Test

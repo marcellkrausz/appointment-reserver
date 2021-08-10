@@ -4,6 +4,8 @@ import com.marcellkrausz.appointmentreserve.models.Address;
 import com.marcellkrausz.appointmentreserve.models.BeautyCare;
 import com.marcellkrausz.appointmentreserve.models.City;
 import com.marcellkrausz.appointmentreserve.models.Customer;
+import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
+import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -44,18 +46,18 @@ class AppointmentReserveApplicationIT {
 
     @Test
     public void testBeautyCareById() {
-        BeautyCare excepted = new BeautyCare(1L, "Nyomásterápia", 3000, 30);
-        ResponseEntity<BeautyCare> responseEntity = restTemplate.getForEntity(BASE_URL + "/beautycare/1", BeautyCare.class);
-        BeautyCare actual = responseEntity.getBody();
+        BeautyCareDto excepted = new BeautyCareDto(1L, "Nyomásterápia", 3000, 30);
+        ResponseEntity<BeautyCareDto> responseEntity = restTemplate.getForEntity(BASE_URL + "/beautycare/1", BeautyCareDto.class);
+        BeautyCareDto actual = responseEntity.getBody();
 
         assertEquals(excepted.getName(), actual.getName());
     }
 
     @Test
     public void testGetCustomerById() {
-        Customer expected = new Customer(2L, "Zsolt", "Zemen", "06709823366", "zemenzsolt@gmail.com");
-        ResponseEntity<Customer> responseEntity = restTemplate.getForEntity(BASE_URL + "/customer/2", Customer.class);
-        Customer actual = responseEntity.getBody();
+        CustomerDto expected = new CustomerDto(1L,"János", "Bíró","06706113333","birojanos@gmail.com",1L);
+        ResponseEntity<CustomerDto> responseEntity = restTemplate.getForEntity(BASE_URL + "/customer/1", CustomerDto.class);
+        CustomerDto actual = responseEntity.getBody();
 
         assertEquals(expected.getLastName(), actual.getLastName());
     }

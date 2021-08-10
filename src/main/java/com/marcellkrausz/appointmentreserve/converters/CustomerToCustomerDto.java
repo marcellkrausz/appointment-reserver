@@ -1,11 +1,16 @@
 package com.marcellkrausz.appointmentreserve.converters;
 
+import com.marcellkrausz.appointmentreserve.models.City;
+import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
 import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserve.models.Customer;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class CustomerToCustomerDto implements Converter<Customer, CustomerDto> {
@@ -29,5 +34,13 @@ public class CustomerToCustomerDto implements Converter<Customer, CustomerDto> {
             customerDto.setAddressId(customer.getAddress().getId());
         }
         return customerDto;
+    }
+
+    public Set<CustomerDto> convertSet(Set<Customer> customers) {
+        Set<CustomerDto> customerDtos = new HashSet<>();
+        for (Customer customer : customers) {
+            customerDtos.add(convert(customer));
+        }
+        return customerDtos;
     }
 }

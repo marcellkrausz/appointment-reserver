@@ -1,15 +1,14 @@
 package com.marcellkrausz.appointmentreserve.services;
 
-import com.marcellkrausz.appointmentreserve.models.BeautyCare;
 import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
 
 import java.util.Set;
 
 public interface BeautyCareService {
 
-    Set<BeautyCare> getAllBeautyCare();
+    Set<BeautyCareDto> getAllBeautyCare();
 
-    BeautyCare getBeautyCareById(Long id);
+    BeautyCareDto getBeautyCareById(Long id);
 
     BeautyCareDto saveBeautyCare(BeautyCareDto beautyCareDto);
 

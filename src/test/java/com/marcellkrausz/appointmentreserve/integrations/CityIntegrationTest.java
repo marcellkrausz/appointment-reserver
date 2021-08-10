@@ -62,9 +62,9 @@ public class CityIntegrationTest {
 
     @Test
     public void addNewCity_shouldReturnSameCity() {
-        City city = new City(null, "Város", 1135);
-        restTemplate.postForObject(BASE_URL, city, City.class);
-        City result = restTemplate.getForObject(BASE_URL + "/6", City.class);
+        CityDto city = new CityDto(null, "Város", 1135);
+        restTemplate.postForObject(BASE_URL, city, CityDto.class);
+        CityDto result = restTemplate.getForObject(BASE_URL + "/6", CityDto.class);
 
         assertEquals(result.getName(), city.getName());
     }

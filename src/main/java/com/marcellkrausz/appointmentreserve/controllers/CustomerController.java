@@ -22,12 +22,12 @@ public class CustomerController {
     }
 
     @GetMapping()
-    public Set<Customer> getAll() {
+    public Set<CustomerDto> getAll() {
         return customerService.getAllCustomer();
     }
 
     @GetMapping("/{id}")
-    public Customer getById(@PathVariable("id") String id) {
+    public CustomerDto getById(@PathVariable("id") String id) {
         if (StringToLong.convert(id) == null) {
             throw new CustomerNotFoundException("Must enter a valid number.");
         }

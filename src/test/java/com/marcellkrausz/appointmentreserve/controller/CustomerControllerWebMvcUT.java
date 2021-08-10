@@ -2,6 +2,7 @@ package com.marcellkrausz.appointmentreserve.controller;
 
 import com.marcellkrausz.appointmentreserve.controllers.CustomerController;
 import com.marcellkrausz.appointmentreserve.models.Customer;
+import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
 import com.marcellkrausz.appointmentreserve.services.CustomerService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ public class CustomerControllerWebMvcUT {
 
     @Test
     void testListCustomers() throws Exception {
-        Customer customer = new Customer();
+        CustomerDto customer = new CustomerDto();
         customer.setId(1L);
         customer.setFirstName("Marcell");
         customer.setLastName("Krausz");
@@ -52,7 +53,7 @@ public class CustomerControllerWebMvcUT {
 
     @Test
     void testGetCustomerById() throws Exception {
-        Customer customer = new Customer();
+        CustomerDto customer = new CustomerDto();
         customer.setId(1L);
         customer.setFirstName("Marcell");
         customer.setLastName("Krausz");

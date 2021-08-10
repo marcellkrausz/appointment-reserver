@@ -30,22 +30,22 @@ public class BeautyCareServiceImpl implements BeautyCareService {
     }
 
     @Override
-    public Set<BeautyCare> getAllBeautyCare() {
+    public Set<BeautyCareDto> getAllBeautyCare() {
         Set<BeautyCare> beautyCares = new HashSet<>();
         beautyCarteRepository.findAll().iterator().forEachRemaining(beautyCares::add);
         if (beautyCares.isEmpty()) {
             throw new BeautyCareNotFoundException("Beauty cares not found in database.");
         }
-        return beautyCares;
+        return beautyCareToBeautyCareDto.convertSet(beautyCares);
     }
 
     @Override
-    public BeautyCare getBeautyCareById(Long id) {
+    public BeautyCareDto getBeautyCareById(Long id) {
         Optional<BeautyCare> cosmeticServiceOptional = beautyCarteRepository.findById(id);
         if (cosmeticServiceOptional.isEmpty()) {
             throw new BeautyCareNotFoundException("Beauty care not found");
         }
-        return cosmeticServiceOptional.get();
+        return beautyCareToBeautyCareDto.convert(cosmeticServiceOptional.get());
     }
 
     @Transactional

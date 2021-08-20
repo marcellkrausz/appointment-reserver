@@ -1,9 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
-import com.marcellkrausz.appointmentreserve.controllers.CustomerController;
-import com.marcellkrausz.appointmentreserve.models.Customer;
-import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
-import com.marcellkrausz.appointmentreserve.services.CustomerService;
+import com.marcellkrausz.appointmentreserve.model.dto.CustomerDto;
+import com.marcellkrausz.appointmentreserve.service.CustomerService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

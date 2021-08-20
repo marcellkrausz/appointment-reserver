@@ -1,11 +1,7 @@
 package com.marcellkrausz.appointmentreserve;
 
-import com.marcellkrausz.appointmentreserve.models.Address;
-import com.marcellkrausz.appointmentreserve.models.BeautyCare;
-import com.marcellkrausz.appointmentreserve.models.City;
-import com.marcellkrausz.appointmentreserve.models.Customer;
-import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
-import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
+import com.marcellkrausz.appointmentreserve.model.dto.BeautyCareDto;
+import com.marcellkrausz.appointmentreserve.model.dto.CustomerDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -14,10 +10,6 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
-
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

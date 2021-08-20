@@ -1,11 +1,10 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
-import com.marcellkrausz.appointmentreserve.controllers.AppointmentController;
-import com.marcellkrausz.appointmentreserve.exceptions.AppointmentNotFoundException;
-import com.marcellkrausz.appointmentreserve.models.dto.AppointmentDto;
-import com.marcellkrausz.appointmentreserve.models.dto.BeautyCareDto;
-import com.marcellkrausz.appointmentreserve.models.dto.CustomerDto;
-import com.marcellkrausz.appointmentreserve.services.AppointmentService;
+import com.marcellkrausz.appointmentreserve.exception.AppointmentNotFoundException;
+import com.marcellkrausz.appointmentreserve.model.dto.AppointmentDto;
+import com.marcellkrausz.appointmentreserve.model.dto.BeautyCareDto;
+import com.marcellkrausz.appointmentreserve.model.dto.CustomerDto;
+import com.marcellkrausz.appointmentreserve.service.AppointmentService;
 
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;

@@ -1,9 +1,7 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
-import com.marcellkrausz.appointmentreserve.controllers.CityController;
-import com.marcellkrausz.appointmentreserve.models.City;
-import com.marcellkrausz.appointmentreserve.models.dto.CityDto;
-import com.marcellkrausz.appointmentreserve.services.CityService;
+import com.marcellkrausz.appointmentreserve.model.dto.CityDto;
+import com.marcellkrausz.appointmentreserve.service.CityService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

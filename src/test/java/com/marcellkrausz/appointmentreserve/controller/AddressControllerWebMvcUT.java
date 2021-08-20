@@ -1,9 +1,8 @@
 package com.marcellkrausz.appointmentreserve.controller;
 
-import com.marcellkrausz.appointmentreserve.controllers.AddressController;
-import com.marcellkrausz.appointmentreserve.models.dto.AddressDto;
-import com.marcellkrausz.appointmentreserve.repositories.AddressRepository;
-import com.marcellkrausz.appointmentreserve.services.AddressService;
+import com.marcellkrausz.appointmentreserve.model.dto.AddressDto;
+import com.marcellkrausz.appointmentreserve.repository.AddressRepository;
+import com.marcellkrausz.appointmentreserve.service.AddressService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +64,7 @@ public class AddressControllerWebMvcUT {
     @Test
     void testSaveCorrectAddress() throws Exception {
         JSONObject addressJson = new JSONObject();
-        addressJson.put("id", 1);
+        addressJson.put("id", 0);
         addressJson.put("street", "Ady");
         addressJson.put("houseNumber", 23);
         addressJson.put("cityId", 1);
@@ -82,7 +81,7 @@ public class AddressControllerWebMvcUT {
     @Test
     void testSaveAddressWithoutStreetName() throws Exception {
         JSONObject addressJson = new JSONObject();
-        addressJson.put("id", 1);
+        addressJson.put("id", 7);
         addressJson.put("houseNumber", 23);
         addressJson.put("cityId", 1);
 

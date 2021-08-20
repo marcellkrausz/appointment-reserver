@@ -16,7 +16,6 @@ INSERT INTO beauty_care (name, price, minutes) VALUES ('Nyomásterápia', 3000, 
 INSERT INTO beauty_care (name, price, minutes) VALUES ('Mezopen', 15000, 60);
 INSERT INTO beauty_care (name, price, minutes) VALUES ('Mezoterápiás testkezelés', 15000, 45);
 INSERT INTO beauty_care (name, price, minutes) VALUES ('Derma Clear kezelés problémás bőrre', 11000, 30);
-
 INSERT INTO beauty_care (name, price, minutes) VALUES ('Recorvery növényi őssejtes kezelés', 12000, 15);
 
 INSERT INTO appointment (appointment_date_start, appointment_date_end, customer_id) VALUES ('2021-07-14 13:00:00', '2021-07-14 14:00:00', 1);

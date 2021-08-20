@@ -1,8 +1,6 @@
 package com.marcellkrausz.appointmentreserve.integration;
 
 import com.marcellkrausz.appointmentreserve.model.Customer;
-import com.marcellkrausz.appointmentreserve.model.dto.AddressDto;
-import com.marcellkrausz.appointmentreserve.model.dto.CityDto;
 import com.marcellkrausz.appointmentreserve.model.dto.CustomerDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

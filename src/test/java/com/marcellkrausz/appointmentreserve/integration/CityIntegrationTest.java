@@ -92,6 +92,7 @@ public class CityIntegrationTest {
 
         Set<CityDto> remainingCities =
                 Stream.of(restTemplate.getForObject(BASE_URL, CityDto[].class)).collect(Collectors.toSet());
+
         assertEquals(testCities.size(), remainingCities.size());
     }
 }

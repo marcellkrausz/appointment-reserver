@@ -1,6 +1,5 @@
 package com.marcellkrausz.appointmentreserve.integration;
 
-import com.marcellkrausz.appointmentreserve.model.Address;
 import com.marcellkrausz.appointmentreserve.model.dto.AddressDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -56,11 +55,13 @@ public class AddressIntegrationTest {
 
     @Test
     public void addNewAddress_shouldReturnSameAddress() {
-        AddressDto testAddress = new AddressDto(null, "Jankovics", 1, 1L);
+        AddressDto addressDto = new AddressDto(null, "Jankovics", 1, 1L);
 
-        restTemplate.postForObject(BASE_URL, testAddress, AddressDto.class);
+        restTemplate.postForObject(BASE_URL, addressDto, AddressDto.class);
         AddressDto result = restTemplate.getForObject(BASE_URL + "/3", AddressDto.class);
 
-        assertEquals(testAddress.getStreet(), result.getStreet());
+        assertEquals(addressDto.getStreet(), result.getStreet());
     }
+
+
 }

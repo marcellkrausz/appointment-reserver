@@ -23,7 +23,7 @@ public class BeautyCare {
     private Integer price;
     private Integer minutes;
 
-    @ManyToMany(mappedBy = "beautyCares")
+    @ManyToMany(mappedBy = "beautyCares", cascade = CascadeType.REMOVE)
     private Set<Appointment> serviceAppointments = new HashSet<>();
 
     @Override
